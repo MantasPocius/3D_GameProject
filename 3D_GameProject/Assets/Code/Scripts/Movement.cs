@@ -5,65 +5,78 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    private CharacterController controller;
+
     public GameObject objectToRotate;
-    public float slowdownMovement = 1, slowdownRotation = 1, shootingStrength = 5, movementStrength = 6, jumpStrength = 4;
-    Vector2 movementData, rotData;
-    public GameObject objectToSpawn;
-    public GameObject shootingPoint;
-    public bool isGrounded = true;
+    public bool isGrounded = true, isMoving = true;
+    public float topClamp = -90f, bottomClamp = 90f, mouseSensitivity = 500;
+    float xRotation = 0f, yRotation = 0f;
+
+    public float speed = 12f, gravity = -9.81f * 2f, jumpHeight = 3f, groundDistance = 0.4f;
+    public Transform groundCheck;
+    public LayerMask groundMask;
+
+    Vector3 Velocity;
+
+    private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
+
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Vector2 vector2 = new Vector2(1, 1);
-        Vector2 vector2norm = vector2.normalized;
-        Debug.Log(vector2norm);
-        Debug.Log(vector2.magnitude);
-        Debug.Log(vector2norm.magnitude);
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector2 newnormVector = movementData.normalized;
-        //movementData.Normalize();
-        /*transform.Translate(movementData.x / slowdownMovement * Time.deltaTime, 0, movementData.y / slowdownMovement * Time.deltaTime);*/
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        transform.Rotate(0, rotData.x / slowdownRotation * Time.deltaTime, 0);
-        objectToRotate.transform.Rotate(-rotData.y / slowdownRotation * Time.deltaTime, 0, 0);
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, topClamp, bottomClamp);
+
+        yRotation += mouseX;
+
+        objectToRotate.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        gameObject.transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(isGrounded && Velocity.y < 0)
+        {
+            Velocity.y = -1f * Time.deltaTime;
+        }
+
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move * speed * Time.deltaTime);
+
+        if(Input.GetButton("Jump") && isGrounded)
+        {
+            Velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        Velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(Velocity * Time.deltaTime);
+
+        if (lastPosition != gameObject.transform.position && isGrounded == true)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        lastPosition = gameObject.transform.position;
     }
 
     private void FixedUpdate()
     {
-        //movementData.Normalize();
-        //GetComponent<Rigidbody>().AddRelativeForce(new Vector3(movementData.x, 0, movementData.y) * Time.fixedDeltaTime * movementStrength, ForceMode.Force);
-        GetComponent<Rigidbody>().MovePosition(transform.position + transform.TransformDirection(new Vector3(movementData.x, 0, movementData.y)) * Time.fixedDeltaTime * movementStrength);
-    }
-    public void OnMove(InputAction.CallbackContext callback)
-    {
-        movementData = callback.ReadValue<Vector2>();
-    }
-    public void OnLook(InputAction.CallbackContext callback)
-    {
-        rotData = callback.ReadValue<Vector2>();
-    }
-    public void OnJump(InputAction.CallbackContext callback)
-    {
-
-        if (callback.started && isGrounded)
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-        }
-    }
-
-    public void OnShoot(InputAction.CallbackContext callback)
-    {
-        if (callback.started)
-        {
-            GameObject mySpawnedObject = Instantiate(objectToSpawn, shootingPoint.transform.position, Quaternion.identity);
-            mySpawnedObject.GetComponent<Rigidbody>().AddForce((shootingPoint.transform.up) * shootingStrength, ForceMode.Impulse);
-            Destroy(mySpawnedObject, 3);
-        }
+        
     }
 
     public void OnCollisionEnter(Collision collision)
