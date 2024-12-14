@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Rifle : MonoBehaviour
@@ -12,6 +13,8 @@ public class Rifle : MonoBehaviour
 
     public Camera playerCamera;
 
+    public TextMeshProUGUI ammoText;
+
     private bool isReloading = false;
     private bool isReadyToFire = true;
 
@@ -19,6 +22,8 @@ public class Rifle : MonoBehaviour
     void Start()
     {
         currentAmmo = maxAmmo;
+        UpdateAmmoDisplay();
+
     }
 
     void Update()
@@ -48,7 +53,10 @@ public class Rifle : MonoBehaviour
         currentAmmo--;
         isReadyToFire = false;
 
+
+
         Debug.Log("Shot, bullet left " + currentAmmo);
+        UpdateAmmoDisplay();
 
 
         RaycastHit hit;
@@ -88,8 +96,21 @@ public class Rifle : MonoBehaviour
         currentAmmo = maxAmmo; 
         isReloading = false;
 
+
         Debug.Log("Reload complete");
+        UpdateAmmoDisplay();
     }
+
+
+    void UpdateAmmoDisplay()
+    {
+
+        if (ammoText != null)
+        {
+            ammoText.text = $"{currentAmmo} / {maxAmmo}";
+        }
+    }
+
 
 
 }
