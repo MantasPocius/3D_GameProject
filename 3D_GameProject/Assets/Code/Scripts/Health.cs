@@ -46,7 +46,6 @@ public class Health : MonoBehaviour
         }
     }
 
-    // Метод для исцеления
     public void Heal(int healAmount)
     {
         currentHealth += healAmount;
