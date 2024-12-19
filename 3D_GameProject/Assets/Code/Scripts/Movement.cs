@@ -8,11 +8,11 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
 
     public GameObject objectToRotate;
-    public bool isGrounded = true, isMoving = true;
-    public float topClamp = -90f, bottomClamp = 90f, mouseSensitivity = 500;
+    public float topClamp = -90f, bottomClamp = 90f, mouseSensitivity = 100;
     float xRotation = 0f, yRotation = 0f;
-
-    public float speed = 12f, gravity = -9.81f * 2f, jumpHeight = 3f, groundDistance = 0.4f;
+    
+    public float speed = 6f, gravity = -18.62f, jumpHeight = 1f, groundDistance = 0.1f;
+    public bool isGrounded = true, isMoving = true;
     public Transform groundCheck;
     public LayerMask groundMask;
 
@@ -48,10 +48,10 @@ public class Movement : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
+        
         Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
+        
+        controller.Move(Vector3.ClampMagnitude(transform.forward * z + transform.right * x, 1.0f) * speed * Time.deltaTime);
 
         if(Input.GetButton("Jump") && isGrounded)
         {
@@ -72,11 +72,6 @@ public class Movement : MonoBehaviour
         }
 
         lastPosition = gameObject.transform.position;
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     public void OnCollisionEnter(Collision collision)

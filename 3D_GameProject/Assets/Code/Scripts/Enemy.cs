@@ -15,9 +15,16 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(target.position);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if(agent.enabled)
+        {
+            agent.SetDestination(target.position);
+        }
+        if(agent.remainingDistance < 30f)
+        {
+
+        }
     }
 }
