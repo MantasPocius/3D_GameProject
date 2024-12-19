@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: dff5e131c7fe16549923d84834b232f3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2893,8 +2893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToRotate: {fileID: 114314036}
-  isGrounded: 1
-  isMoving: 0
   topClamp: -90
   bottomClamp: 90
   mouseSensitivity: 160
@@ -2902,6 +2900,8 @@ MonoBehaviour:
   gravity: -18.62
   jumpHeight: 2
   groundDistance: 0.4
+  isGrounded: 1
+  isMoving: 0
   groundCheck: {fileID: 1943021010}
   groundMask:
     serializedVersion: 2
