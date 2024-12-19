@@ -30,7 +30,22 @@ public class Health : MonoBehaviour
 
     }
 
-   
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TakeDamage(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Heal(10);
+        }
+
+    }
+
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

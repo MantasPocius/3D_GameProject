@@ -23,7 +23,6 @@ public class Rifle : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
-
     }
 
     void Update()
@@ -54,13 +53,12 @@ public class Rifle : MonoBehaviour
         isReadyToFire = false;
 
 
-
-        Debug.Log("Shot, bullet left " + currentAmmo);
         UpdateAmmoDisplay();
 
 
         RaycastHit hit;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -71,10 +69,6 @@ public class Rifle : MonoBehaviour
             {
                 Debug.Log("Enemy hit");
             }
-        }
-        else
-        {
-            Debug.Log("no hit");
         }
 
         Invoke(nameof(ResetFire), 1 / fireRate);
