@@ -12,8 +12,8 @@ public class Rifle : MonoBehaviour
     public float fireRate = 1f;
 
     public Camera playerCamera;
-
     public TextMeshProUGUI ammoText;
+    public ParticleSystem muzzleFlash;
 
     private bool isReloading = false;
     private bool isReadyToFire = true;
@@ -55,6 +55,10 @@ public class Rifle : MonoBehaviour
 
         UpdateAmmoDisplay();
 
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+        }
 
         RaycastHit hit;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
