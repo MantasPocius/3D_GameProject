@@ -43,6 +43,7 @@ public class Rifle : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
     }
 
     void Shoot()
