@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {   
     public Transform player;
-    public float openRange = 2f;
+    public float openRange = 10f;
     //public string inventoryItemName = "The key";
     public GameObject findHint;
     public GameObject openHint;
@@ -17,17 +18,15 @@ public class Door : MonoBehaviour
     private bool isInRange = false;
     private bool DoorIsOpen=false;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         DoorIsOpen = Key.KeyPickedUp;
+        
         
 
         if (Vector3.Distance(player.position, transform.position) < openRange)
@@ -46,7 +45,7 @@ public class Door : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && DoorIsOpen)
             {
                 Debug.Log("Door is open");
 
@@ -60,16 +59,16 @@ public class Door : MonoBehaviour
         }
         else
         {
-            if (isInRange)
-            {
-                findHint.SetActive(false);
-                findBackground.SetActive(false);
-                isInRange = false;
-            }
-            if (isInRange)
+            if (DoorIsOpen)
             {
                 openHint.SetActive(false);
                 openBackground.SetActive(false);
+                isInRange = false;
+            }
+            else
+            {
+                findHint.SetActive(false);
+                findBackground.SetActive(false);
                 isInRange = false;
             }
         }
