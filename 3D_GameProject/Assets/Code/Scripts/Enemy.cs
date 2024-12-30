@@ -6,25 +6,22 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public Transform target;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
+    public LayerMask groundMask, playerMask;
+    public bool canAttack, canSee;
+    bool attacked;
+    public float sightRange, attackRange;
 
 
-    void Start()
+    void Awake()
     {
+        target = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(target.position);
     }
 
 
     void Update()
     {
-        if(agent.enabled)
-        {
-            agent.SetDestination(target.position);
-        }
-        if(agent.remainingDistance < 30f)
-        {
-
-        }
+        
     }
 }

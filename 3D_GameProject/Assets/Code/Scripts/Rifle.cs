@@ -39,7 +39,7 @@ public class Rifle : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || currentAmmo <= 0)
         {
             StartCoroutine(Reload());
         }
