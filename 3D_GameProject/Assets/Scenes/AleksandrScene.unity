@@ -6132,7 +6132,7 @@ MonoBehaviour:
   speed: 10
   gravity: -18.62
   jumpHeight: 2
-  groundDistance: 0.01
+  groundDistance: 0.1
   isGrounded: 1
   isMoving: 0
   groundCheck: {fileID: 843752388}
