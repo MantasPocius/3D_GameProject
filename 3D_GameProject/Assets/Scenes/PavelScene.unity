@@ -294,7 +294,7 @@ MonoBehaviour:
   speed: 10
   gravity: -18.62
   jumpHeight: 2
-  groundDistance: 0.4
+  groundDistance: 0.1
   isGrounded: 1
   isMoving: 0
   groundCheck: {fileID: 296406543}
@@ -3938,6 +3938,10 @@ PrefabInstance:
     - target: {fileID: 3151186894056067961, guid: 8222d061487f0544ca5efcca43fce2b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822605716819291488, guid: 8222d061487f0544ca5efcca43fce2b1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7114430109758553683, guid: 8222d061487f0544ca5efcca43fce2b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -11433,6 +11437,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3799748049691648761, guid: d16a4bb750299d941b3ef968ad453437, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5258333603886982835, guid: d16a4bb750299d941b3ef968ad453437, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -11578,6 +11586,10 @@ PrefabInstance:
     - target: {fileID: 6559471573626349156, guid: 682c09a687e47cb45999156dbbd7c5e7, type: 3}
       propertyPath: m_Name
       value: TrenchEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343230048925734989, guid: 682c09a687e47cb45999156dbbd7c5e7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
