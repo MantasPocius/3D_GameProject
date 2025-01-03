@@ -11,6 +11,10 @@ public class Rifle : MonoBehaviour
     public float reloadTime = 2f;
     public float fireRate = 1f;
 
+    public GameObject CasePrefab;
+    public Transform shellEjectPoint;
+    public float shellEjectDelay = 0.5f;
+
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
     public ParticleSystem muzzleFlash;
@@ -35,10 +39,11 @@ public class Rifle : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || currentAmmo <= 0)
         {
             StartCoroutine(Reload());
         }
+
     }
 
     void Shoot()
@@ -75,6 +80,7 @@ public class Rifle : MonoBehaviour
             }
         }
 
+        Invoke(nameof(EjectShell), shellEjectDelay);
         Invoke(nameof(ResetFire), 1 / fireRate);
     }
 
@@ -109,6 +115,24 @@ public class Rifle : MonoBehaviour
         }
     }
 
+    void EjectShell()
+    {
+        if (CasePrefab != null && shellEjectPoint != null)
+        {
+            
+            GameObject shell = Instantiate(CasePrefab, shellEjectPoint.position, shellEjectPoint.rotation);
 
+            Rigidbody shellRb = shell.GetComponent<Rigidbody>();
+            if (shellRb != null)
+            {
+                
+                Vector3 ejectDirection = shellEjectPoint.right + shellEjectPoint.up * 0.5f;
+                shellRb.AddForce(ejectDirection * 5f, ForceMode.Impulse);
+                shellRb.AddTorque(Random.insideUnitSphere * 50f, ForceMode.Impulse);
+            }
+
+            Destroy(shell, 5f);
+        }
+    }
 
 }

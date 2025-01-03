@@ -32,7 +32,7 @@ public class ItemPickup : MonoBehaviour
 
                 Debug.Log(inventoryItemName + " picked up!");
 
-                Destroy(gameObject);
+                gameObject.SetActive(false);
 
                 pickupHint.SetActive(false);
                 pickupBackground.SetActive(false);
