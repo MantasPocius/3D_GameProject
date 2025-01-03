@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Pickup
   - Door
+  - Lighting Change
   layers:
   - Default
   - TransparentFX
