@@ -1,47 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightChange : MonoBehaviour
 {
-    [SerializeField] private Material skyBox;
-    private static readonly int Exposure = Shader.PropertyToID("_Exposure");
+    [SerializeField] private Light Light;
+    [SerializeField] private LightingSettings settings;
+    private static readonly int Intensity = Shader.PropertyToID("_Intensity_Multyplier");
+
     private float brightness = 0.84f;
     private bool change = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        skyBox.SetFloat(Exposure, brightness);
-        Debug.Log("ASDSA");
+        //settings.
+        //Debug.Log("ASDSA");
+        //Light.intensity = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (change)
+        if (change && Light.enabled)
         {
-            Debug.Log("Asjerwiohj");
-            if (brightness == 0.84f)
-            {
-                Debug.Log("1");
-                while (brightness > 0)
-                {
-                    brightness -= 0.0001f;
-                    Debug.Log(brightness);
-                    skyBox.SetFloat(Exposure, brightness);
-                }
-            }
-            if (brightness == 0f)
-            {
-                Debug.Log("2");
-                while (brightness < 0.84f)
-                {
-                    brightness += 0.0001f;
-                    Debug.Log(brightness);
-                    skyBox.SetFloat(Exposure, brightness);
-                }
-            }
+            Light.enabled = false;
+        }
+        if (change && !Light.enabled)
+        {
+            Light.enabled = true;
         }
     }
 
@@ -50,6 +38,7 @@ public class LightChange : MonoBehaviour
         if (tag == "Lighting Change")
         {
             change = false;
+
         }
     }
 
