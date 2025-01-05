@@ -438,6 +438,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!95 &743715772 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6692127207513529728, guid: 0cd90e0ef897a5a4d9aa8f6d5861a3e5, type: 3}
+  m_PrefabInstance: {fileID: 6069325239660537032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1312425985 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6852420118496559249, guid: 29dfbbf19ceefe64e8b7b9ac5c1f2aca, type: 3}
@@ -460,6 +465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1570606441 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9066952161975818554, guid: 0cd90e0ef897a5a4d9aa8f6d5861a3e5, type: 3}
+  m_PrefabInstance: {fileID: 6069325239660537032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1835787517
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +904,18 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1512934036}
+    - target: {fileID: 4644033786796124557, guid: 0cd90e0ef897a5a4d9aa8f6d5861a3e5, type: 3}
+      propertyPath: gunAnimator
+      value: 
+      objectReference: {fileID: 743715772}
+    - target: {fileID: 4644033786796124557, guid: 0cd90e0ef897a5a4d9aa8f6d5861a3e5, type: 3}
+      propertyPath: armsAnimator
+      value: 
+      objectReference: {fileID: 1570606441}
+    - target: {fileID: 4644033786796124557, guid: 0cd90e0ef897a5a4d9aa8f6d5861a3e5, type: 3}
+      propertyPath: shellEjectDelay
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

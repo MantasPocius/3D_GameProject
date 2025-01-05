@@ -22,6 +22,8 @@ public class Rifle : MonoBehaviour
     private bool isReloading = false;
     private bool isReadyToFire = true;
 
+    public Animator armsAnimator;
+    public Animator gunAnimator;
 
     void Start()
     {
@@ -60,6 +62,17 @@ public class Rifle : MonoBehaviour
 
         UpdateAmmoDisplay();
 
+
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetBool("Fire", true);
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetBool("Fire", true);
+        }
+
         if (muzzleFlash != null)
         {
             muzzleFlash.Play();
@@ -82,6 +95,22 @@ public class Rifle : MonoBehaviour
 
         Invoke(nameof(EjectShell), shellEjectDelay);
         Invoke(nameof(ResetFire), 1 / fireRate);
+
+        Invoke(nameof(ResetShootingAnimation), 0.1f);
+
+    }
+
+    void ResetShootingAnimation()
+    {
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetBool("Fire", false);
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetBool("Fire", false);
+        }
     }
 
     void ResetFire()
