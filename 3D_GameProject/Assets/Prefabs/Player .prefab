@@ -1140,10 +1140,13 @@ MonoBehaviour:
   fireRate: 1
   CasePrefab: {fileID: 7855159051329160553, guid: 68e7ef02262433144a2b6f15fa26f633, type: 3}
   shellEjectPoint: {fileID: 4499450788631319283}
-  shellEjectDelay: 0.5
+  shellEjectDelay: 0.6
   playerCamera: {fileID: 5873663164032109960}
   ammoText: {fileID: 0}
   muzzleFlash: {fileID: 7487057190562733977}
+  bulletImpactPrefab: {fileID: 8208521894766935983, guid: 845301dc3dac69849ab55c50fe6a6dd8, type: 3}
+  armsAnimator: {fileID: 9066952161975818554}
+  gunAnimator: {fileID: 6692127207513529728}
 --- !u!1 &3496543140098474539
 GameObject:
   m_ObjectHideFlags: 0

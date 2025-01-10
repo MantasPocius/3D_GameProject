@@ -18,10 +18,13 @@ public class Rifle : MonoBehaviour
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
     public ParticleSystem muzzleFlash;
+    public GameObject bulletImpactPrefab;
 
     private bool isReloading = false;
     private bool isReadyToFire = true;
 
+    public Animator armsAnimator;
+    public Animator gunAnimator;
 
     void Start()
     {
@@ -60,6 +63,17 @@ public class Rifle : MonoBehaviour
 
         UpdateAmmoDisplay();
 
+
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetBool("Fire", true);
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetBool("Fire", true);
+        }
+
         if (muzzleFlash != null)
         {
             muzzleFlash.Play();
@@ -78,10 +92,39 @@ public class Rifle : MonoBehaviour
             {
                 Debug.Log("Enemy hit");
             }
+
+            CreateBulletImpact(hit);
         }
 
         Invoke(nameof(EjectShell), shellEjectDelay);
         Invoke(nameof(ResetFire), 1 / fireRate);
+
+        Invoke(nameof(ResetShootingAnimation), 0.1f);
+
+    }
+
+
+    void CreateBulletImpact(RaycastHit hit)
+    {
+        if (bulletImpactPrefab != null)
+        {
+            GameObject impact = Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+
+            Destroy(impact, 10f);
+        }
+    }
+
+    void ResetShootingAnimation()
+    {
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetBool("Fire", false);
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetBool("Fire", false);
+        }
     }
 
     void ResetFire()
@@ -93,16 +136,50 @@ public class Rifle : MonoBehaviour
     {
         isReloading = true;
 
-        Debug.Log("Reload");
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetTrigger("OpenBolt");
+        }
 
-        yield return new WaitForSeconds(reloadTime);
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetTrigger("OpenBolt");
+        }
 
-        currentAmmo = maxAmmo; 
+        yield return new WaitForSeconds(0.5f);
+
+        while (currentAmmo < maxAmmo)
+        {
+            if (armsAnimator != null)
+            {
+                armsAnimator.SetTrigger("InsertRound");
+            }
+
+            if (gunAnimator != null)
+            {
+                gunAnimator.SetTrigger("InsertRound");
+            }
+
+            yield return new WaitForSeconds(0.80f);
+
+            currentAmmo++;
+            UpdateAmmoDisplay();
+        }
+
+        if (armsAnimator != null)
+        {
+            armsAnimator.SetTrigger("CloseBolt");
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetTrigger("CloseBolt");
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
         isReloading = false;
-
-
-        Debug.Log("Reload complete");
-        UpdateAmmoDisplay();
+        Debug.Log("Reloading complete");
     }
 
 
