@@ -19,6 +19,7 @@ public class Rifle : MonoBehaviour
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
     public ParticleSystem muzzleFlash;
+    public GameObject bulletImpactPrefab;
 
     private bool isReloading = false;
     private bool isReadyToFire = true;
@@ -98,6 +99,7 @@ public class Rifle : MonoBehaviour
             {
                 hitBox.OnRaycastHit(this);
             }
+            CreateBulletImpact(hit);
         }
 
         Invoke(nameof(EjectShell), shellEjectDelay);
@@ -105,6 +107,17 @@ public class Rifle : MonoBehaviour
 
         Invoke(nameof(ResetShootingAnimation), 0.1f);
 
+    }
+
+
+    void CreateBulletImpact(RaycastHit hit)
+    {
+        if (bulletImpactPrefab != null)
+        {
+            GameObject impact = Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+
+            Destroy(impact, 10f);
+        }
     }
 
     void ResetShootingAnimation()

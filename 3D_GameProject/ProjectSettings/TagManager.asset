@@ -9,6 +9,8 @@ TagManager:
   - Pickup
   - Door
   - Lighting Change
+  - DAHKNESS
+  - Lightness
   layers:
   - Default
   - TransparentFX
