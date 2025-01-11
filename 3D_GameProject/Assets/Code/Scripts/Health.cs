@@ -7,9 +7,8 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 
-    public float maxHealth; 
-    [HideInInspector] public float currentHealth;
-    Ragdoll ragdoll;
+    public int maxHealth = 100; 
+    public int currentHealth; 
 
     public Slider healthSlider;
     public Image healthFillImage;
@@ -18,14 +17,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        ragdoll = GetComponent<Ragdoll>();
-
-        var rigidbodies = GetComponentsInChildren<Rigidbody>();
-        foreach(var rigidbody in rigidbodies)
-        {
-            HitBox hitbox = rigidbody.gameObject.AddComponent<HitBox>();
-            hitbox.health = this;
-        }
+  
         currentHealth = maxHealth;
        
         healthSlider.maxValue = maxHealth;
@@ -54,25 +46,25 @@ public class Health : MonoBehaviour
     }
 
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth); 
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); 
 
         UpdateHealthBar();
         UpdateHpDisplay();
         UpdateHealthColor();
 
-        if (currentHealth <= 0.0f && this.tag == "Enemy")
+        if (currentHealth <= 0)
         {
-            ragdoll.ActivateRagdoll();
+            Debug.Log("Dead");
         }
     }
 
-    public void Heal(float healAmount)
+    public void Heal(int healAmount)
     {
         currentHealth += healAmount;
-        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         UpdateHealthBar();
         UpdateHpDisplay();

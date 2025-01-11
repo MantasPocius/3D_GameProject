@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3449385931225522873}
   - component: {fileID: 1629745194154028535}
   - component: {fileID: 5838545063600645630}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}

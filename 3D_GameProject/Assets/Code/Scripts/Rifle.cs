@@ -10,7 +10,6 @@ public class Rifle : MonoBehaviour
     public int currentAmmo;
     public float reloadTime = 2f;
     public float fireRate = 1f;
-    public float damage = 10;
 
     public GameObject CasePrefab;
     public Transform shellEjectPoint;
@@ -94,11 +93,6 @@ public class Rifle : MonoBehaviour
                 Debug.Log("Enemy hit");
             }
 
-            var hitBox = hit.collider.GetComponent<HitBox>();
-            if (hitBox)
-            {
-                hitBox.OnRaycastHit(this);
-            }
             CreateBulletImpact(hit);
         }
 
