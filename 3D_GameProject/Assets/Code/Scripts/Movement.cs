@@ -20,11 +20,14 @@ public class Movement : MonoBehaviour
 
     private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
 
+    public Animator armsAnimator;
+    public Animator gunAnimator;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
+
     }
 
     void Update()
@@ -53,7 +56,11 @@ public class Movement : MonoBehaviour
         
         controller.Move(Vector3.ClampMagnitude(transform.forward * z + transform.right * x, 1.0f) * speed * Time.deltaTime);
 
-        if(Input.GetButton("Jump") && isGrounded)
+        bool isWalking = move.magnitude > 0;
+        armsAnimator.SetBool("Walk", isWalking);
+        gunAnimator.SetBool("Walk", isWalking);
+
+        if (Input.GetButton("Jump") && isGrounded)
         {
             Velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }

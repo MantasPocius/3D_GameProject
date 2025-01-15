@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7813214394558044836
 Transform:
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d982db4aec2599e43918b088ef9006bb, type: 2}
+  - {fileID: 2100000, guid: c9f4ac339f3995a46bbf57b15a62f7bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,12 +118,12 @@ GameObject:
   - component: {fileID: 6447232643682310000}
   - component: {fileID: 4569742784601372298}
   - component: {fileID: 5739785900350671182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6272338373175187048
 Transform:
@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d982db4aec2599e43918b088ef9006bb, type: 2}
+  - {fileID: 2100000, guid: c9f4ac339f3995a46bbf57b15a62f7bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -229,7 +229,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6228886009640184235
 Transform:
@@ -274,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d982db4aec2599e43918b088ef9006bb, type: 2}
+  - {fileID: 2100000, guid: c9f4ac339f3995a46bbf57b15a62f7bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,7 +332,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8853364731027916435
 Transform:
@@ -413,6 +413,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -490,6 +498,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 72b9660a9e718864b9bf8e038d7631de, type: 3}
       propertyPath: m_Name
       value: Fence2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 72b9660a9e718864b9bf8e038d7631de, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 72b9660a9e718864b9bf8e038d7631de, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -569,6 +585,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cfe0d5b02dea8c54dbd6f2cc6a46d5d3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: cfe0d5b02dea8c54dbd6f2cc6a46d5d3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -643,6 +667,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -712,6 +744,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
       propertyPath: m_Name
       value: Plank2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 2cc4b26fff819964881544cda0a29661, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

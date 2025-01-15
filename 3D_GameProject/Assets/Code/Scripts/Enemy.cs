@@ -7,21 +7,32 @@ public class Enemy : MonoBehaviour
 {
     public Transform target;
     public NavMeshAgent agent;
-    public LayerMask groundMask, playerMask;
-    public bool canAttack, canSee;
-    bool attacked;
-    public float sightRange, attackRange;
+    public float maxTime = 1.0f;
+    public float maxDistance = 10.0f;
+    Animator animator;
+    float timer = 0.0f;
 
 
-    void Awake()
+    void Start()
     {
-        target = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
 
     void Update()
     {
-        
+        timer -= Time.deltaTime;
+        if (timer < 0.0f)
+        {
+            float sqDistance = (target.position - agent.destination).sqrMagnitude;
+            if (sqDistance > maxDistance * maxDistance)
+            {
+                agent.destination = target.position;
+            }
+            timer = maxTime;
+            agent.destination = target.position;
+        }
+        animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 }
