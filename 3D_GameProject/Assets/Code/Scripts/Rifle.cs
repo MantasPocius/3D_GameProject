@@ -61,6 +61,7 @@ public class Rifle : MonoBehaviour
         currentAmmo--;
         isReadyToFire = false;
 
+
         UpdateAmmoDisplay();
 
 
@@ -80,22 +81,17 @@ public class Rifle : MonoBehaviour
         }
 
         RaycastHit hit;
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); 
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
 
         if (Physics.Raycast(ray, out hit))
         {
             Debug.Log("Object hit - " + hit.collider.name);
 
+
             if (hit.collider.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy hit");
-
-                Knight enemy = hit.collider.GetComponent<Knight>();
-                if (enemy != null)
-                {
-                    int damage = 25; 
-                    enemy.TakeDamage(damage);
-                }
             }
 
             var hitBox = hit.collider.GetComponent<HitBox>();

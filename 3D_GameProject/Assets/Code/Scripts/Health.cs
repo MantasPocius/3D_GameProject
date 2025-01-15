@@ -6,20 +6,18 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+
     public float maxHealth; 
     [HideInInspector] public float currentHealth;
     Ragdoll ragdoll;
-
 
     public Slider healthSlider;
     public Image healthFillImage;
     public TextMeshProUGUI hpText;
 
+
     void Start()
     {
-
-        currentHealth = maxHealth;
-
         ragdoll = GetComponent<Ragdoll>();
 
         var rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -30,7 +28,6 @@ public class Health : MonoBehaviour
         }
         currentHealth = maxHealth;
        
-
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
 
@@ -38,8 +35,9 @@ public class Health : MonoBehaviour
         {
             healthFillImage.color = Color.white;
         }
-        UpdateHpDisplay();
+
     }
+
 
     private void Update()
     {
@@ -52,16 +50,18 @@ public class Health : MonoBehaviour
         {
             Heal(10);
         }
+
     }
 
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth); 
 
-
-        UpdateUI();
+        UpdateHealthBar();
+        UpdateHpDisplay();
+        UpdateHealthColor();
 
         if (currentHealth <= 0.0f && this.tag == "Enemy")
         {
@@ -69,42 +69,45 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public void Heal(float healAmount)
     {
-        currentHealth += amount;
+        currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
 
-        UpdateUI();
-    }
-
-    public void UpdateUI()
-    {
         UpdateHealthBar();
         UpdateHpDisplay();
         UpdateHealthColor();
     }
 
-    public void UpdateHealthBar()
+  
+    private void UpdateHealthBar()
     {
-        if (healthSlider != null)
-        {
-            healthSlider.value = currentHealth;
-        }
+        healthSlider.value = currentHealth;
     }
 
-    public void UpdateHpDisplay()
+    void UpdateHpDisplay()
     {
+
         if (hpText != null)
         {
             hpText.text = $"{currentHealth}";
         }
     }
 
-    public void UpdateHealthColor()
+    private void UpdateHealthColor()
     {
         if (healthFillImage != null)
         {
-            healthFillImage.color = currentHealth <= 20 ? Color.red : Color.white;
+
+            if (currentHealth <= 20)
+            {
+                healthFillImage.color = Color.red;
+            }
+            else
+            {
+                healthFillImage.color = Color.white;
+            }
         }
     }
+
 }
