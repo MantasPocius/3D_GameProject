@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-
-    public int maxHealth = 100;
-    public int currentHealth;
-
-
     public float maxHealth; 
     [HideInInspector] public float currentHealth;
     Ragdoll ragdoll;
@@ -23,9 +18,7 @@ public class Health : MonoBehaviour
     void Start()
     {
 
-        currentHealth = 60;
-
-        // Инициализация слайдера и UI
+        currentHealth = maxHealth;
 
         ragdoll = GetComponent<Ragdoll>();
 
@@ -62,16 +55,10 @@ public class Health : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth); 
+        currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
 
 
         UpdateUI();
@@ -82,28 +69,22 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Heal(float healAmount)
+    public void Heal(float amount)
     {
-        currentHealth += healAmount;
+        currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
 
         UpdateUI();
     }
 
-    public void RestoreHealth(int amount)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UpdateUI();
-    }
-
-    private void UpdateUI()
+    public void UpdateUI()
     {
         UpdateHealthBar();
         UpdateHpDisplay();
         UpdateHealthColor();
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         if (healthSlider != null)
         {
@@ -111,7 +92,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void UpdateHpDisplay()
+    public void UpdateHpDisplay()
     {
         if (hpText != null)
         {
@@ -119,7 +100,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void UpdateHealthColor()
+    public void UpdateHealthColor()
     {
         if (healthFillImage != null)
         {
