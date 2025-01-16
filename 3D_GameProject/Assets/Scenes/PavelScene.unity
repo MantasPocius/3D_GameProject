@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 701902185}
-  fireSound: {fileID: 8300000, guid: 28ce347231717654cbbc9391063b3cc2, type: 3}
+  fireSound: {fileID: 8300000, guid: 9e62728a51b11ca4e89725bfb8a20f92, type: 3}
   reloadOpenSound: {fileID: 8300000, guid: 971d32417005d5940a370c7d61f54c68, type: 3}
   reloadBulletSound: {fileID: 8300000, guid: 46019b09af077c348ab9850208449304, type: 3}
   reloadFinalBulletSound: {fileID: 8300000, guid: 919b2b9a1216bcf4293f0abb4fde1ebf, type: 3}
