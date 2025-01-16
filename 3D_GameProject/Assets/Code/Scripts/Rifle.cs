@@ -97,7 +97,7 @@ public class Rifle : MonoBehaviour
             var hitBox = hit.collider.GetComponent<HitBox>();
             if (hitBox)
             {
-                hitBox.OnRaycastHit(this);
+                hitBox.OnRaycastHit(this, ray.direction);
             }
             CreateBulletImpact(hit);
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Ragdoll : MonoBehaviour
@@ -32,5 +33,10 @@ public class Ragdoll : MonoBehaviour
             rigidbody.isKinematic = false;
         }
         animator.enabled = false;
+    }
+    public void ApplyForce(Vector3 force)
+    {
+        var rigidBody = animator.GetBoneTransform(HumanBodyBones.Hips).GetComponent<Rigidbody>();
+        rigidBody.AddForce(force, ForceMode.VelocityChange)
     }
 }
