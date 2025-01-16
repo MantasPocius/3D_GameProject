@@ -4931,7 +4931,7 @@ MonoBehaviour:
   jumpSound: {fileID: 0}
   landingSound: {fileID: 0}
   rifleScript: {fileID: 2059791809}
-  characterController: {fileID: 2059791814}
+  characterController: {fileID: 0}
   footstepInterval: 0.5
 --- !u!82 &701902185
 AudioSource:
