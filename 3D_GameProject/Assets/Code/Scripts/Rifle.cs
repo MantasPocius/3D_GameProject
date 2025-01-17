@@ -8,8 +8,7 @@ public class Rifle : MonoBehaviour
 
     public int maxAmmo = 10;
     public int currentAmmo;
-    public float reloadTime = 2f;
-    public float fireRate = 1f;
+    private float fireRate = 1f;
     public float damage = 10;
 
     public GameObject CasePrefab;
@@ -21,11 +20,21 @@ public class Rifle : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject bulletImpactPrefab;
 
+    public GameObject regularAmmoIcon;
+    public GameObject explosiveAmmoIcon;
+
     private bool isReloading = false;
     private bool isReadyToFire = true;
 
     public Animator armsAnimator;
     public Animator gunAnimator;
+
+    public enum AmmoType
+    {
+        Regular,
+        Explosive
+    }
+    private AmmoType currentAmmoType = AmmoType.Regular;
 
     void Start()
     {
@@ -38,7 +47,7 @@ public class Rifle : MonoBehaviour
         if (isReloading)
             return;
 
-        if (Input.GetButtonDown("Fire1") && isReadyToFire)
+        if (Input.GetMouseButtonDown(0) && isReadyToFire)
         {
             Shoot();
         }
@@ -48,6 +57,10 @@ public class Rifle : MonoBehaviour
             StartCoroutine(Reload());
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchAmmoType();
+        }
     }
 
     void Shoot()
@@ -216,6 +229,25 @@ public class Rifle : MonoBehaviour
 
             Destroy(shell, 5f);
         }
+    }
+
+
+    void SwitchAmmoType()
+    {
+
+        currentAmmoType = currentAmmoType == AmmoType.Regular ? AmmoType.Explosive : AmmoType.Regular;
+
+        if (currentAmmoType == AmmoType.Regular)
+        {
+            regularAmmoIcon.SetActive(true);
+            explosiveAmmoIcon.SetActive(false);
+        }
+        else
+        {
+            regularAmmoIcon.SetActive(false);
+            explosiveAmmoIcon.SetActive(true);
+        }
+
     }
 
 }
