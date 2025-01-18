@@ -10,7 +10,6 @@ public class Sounds : MonoBehaviour
     public AudioClip reloadCloseSound;       // Sound for closing the gun
     public AudioClip smallReloadSound;       // Small reload sound after every shot (short reload animation)
     public AudioClip[] footstepSounds;       // Array of footstep sounds
-    public AudioClip landingSound;           // Landing sound
 
     public Rifle rifleScript;                // Reference to the Rifle script
     public CharacterController characterController; // Reference to CharacterController or similar movement script
@@ -20,8 +19,8 @@ public class Sounds : MonoBehaviour
     private int bulletsToReload = 0;         // Number of bullets left to reload
     private bool isReloadingSoundPlayed = false;
     private bool isSmallReloadSoundPlayed = false; // Ensures small reload sound plays after each shot
-    private bool isJumping = false;          // Tracks if the player is jumping
-    private float nextFootstepTime = 0f;     // Timer for the next footstep sound
+    private bool isJumping = false;         // Tracks if the player is jumping
+    private float nextFootstepTime = 0f;    // Timer for the next footstep sound
 
     void Start()
     {
@@ -77,7 +76,6 @@ public class Sounds : MonoBehaviour
         previousAmmo = rifleScript.currentAmmo;
 
         HandleFootsteps();
-        HandleLanding();
     }
 
     private void PlayFireSound()
@@ -180,38 +178,12 @@ public class Sounds : MonoBehaviour
             }
         }
     }
-
-    private void HandleLanding()
-    {
-        if (characterController == null) return;
-
-        // Landing logic only
-        if (isJumping && characterController.isGrounded)
-        {
-            isJumping = false; // Player has landed
-            PlayLandingSound();
-        }
-        else if (!characterController.isGrounded)
-        {
-            isJumping = true; // Player is in the air
-        }
-    }
-
     private void PlayFootstepSound()
     {
         if (footstepSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, footstepSounds.Length);
             audioSource.PlayOneShot(footstepSounds[randomIndex]);
-        }
-    }
-
-    private void PlayLandingSound()
-    {
-        if (landingSound != null && audioSource != null)
-        {
-            audioSource.Stop();
-            audioSource.PlayOneShot(landingSound);
         }
     }
 }
