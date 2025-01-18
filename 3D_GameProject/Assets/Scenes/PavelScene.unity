@@ -4916,15 +4916,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 701902185}
-  fireSound: {fileID: 8300000, guid: 9e62728a51b11ca4e89725bfb8a20f92, type: 3}
-  reloadOpenSound: {fileID: 8300000, guid: 971d32417005d5940a370c7d61f54c68, type: 3}
+  fireSound: {fileID: 8300000, guid: 1074d124ec75abd46a235b7da2def623, type: 3}
+  reloadOpenSound: {fileID: 8300000, guid: f444e4579f927a448923b36149431f36, type: 3}
   reloadBulletSound: {fileID: 8300000, guid: 46019b09af077c348ab9850208449304, type: 3}
-  reloadFinalBulletSound: {fileID: 8300000, guid: 919b2b9a1216bcf4293f0abb4fde1ebf, type: 3}
-  reloadCloseSound: {fileID: 8300000, guid: 720652961d2476b42baa2b7a6475cb3d, type: 3}
+  reloadFinalBulletSound: {fileID: 8300000, guid: 274910ffe4a67ee40b85efd85b435ad6, type: 3}
+  reloadCloseSound: {fileID: 8300000, guid: 3d23880dc9582b5488973e115f101d35, type: 3}
   smallReloadSound: {fileID: 8300000, guid: 2734f724a7e1e794592250ab0012a37d, type: 3}
   footstepSounds: []
-  jumpSound: {fileID: 0}
-  landingSound: {fileID: 0}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 0}
   footstepInterval: 0.5
@@ -18055,10 +18053,8 @@ MonoBehaviour:
   reloadCloseSound: {fileID: 0}
   smallReloadSound: {fileID: 0}
   footstepSounds:
-  - {fileID: 8300000, guid: 93de69e0fd7d29f44bd042d9a05fac48, type: 3}
-  - {fileID: 8300000, guid: fa9e279c13c2b1f4db93b6f018939fcb, type: 3}
-  jumpSound: {fileID: 8300000, guid: a766bf58959c2634782feac510dafa92, type: 3}
-  landingSound: {fileID: 8300000, guid: 5fa353193e2ad7946818a7c33e2df3e7, type: 3}
+  - {fileID: 8300000, guid: fd772b30d85a79d44bf325aaec54f8fe, type: 3}
+  - {fileID: 8300000, guid: fd079ef964f3e014db402bce4a587530, type: 3}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 2059791814}
   footstepInterval: 0.5
