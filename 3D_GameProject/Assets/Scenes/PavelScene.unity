@@ -5603,6 +5603,7 @@ MonoBehaviour:
   reloadCloseSound: {fileID: 8300000, guid: 3d23880dc9582b5488973e115f101d35, type: 3}
   smallReloadSound: {fileID: 8300000, guid: 2734f724a7e1e794592250ab0012a37d, type: 3}
   footstepSounds: []
+  landingSound: {fileID: 0}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 0}
   footstepInterval: 0.5
@@ -20221,6 +20222,7 @@ MonoBehaviour:
   footstepSounds:
   - {fileID: 8300000, guid: fd772b30d85a79d44bf325aaec54f8fe, type: 3}
   - {fileID: 8300000, guid: fd079ef964f3e014db402bce4a587530, type: 3}
+  landingSound: {fileID: 8300000, guid: 661ace247108b3e44a88cdeb334332d3, type: 3}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 2059791814}
   footstepInterval: 0.5
