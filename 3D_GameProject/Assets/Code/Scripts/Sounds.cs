@@ -10,8 +10,6 @@ public class Sounds : MonoBehaviour
     public AudioClip reloadCloseSound;       // Sound for closing the gun
     public AudioClip smallReloadSound;       // Small reload sound after every shot (short reload animation)
     public AudioClip[] footstepSounds;       // Array of footstep sounds
-    public AudioClip jumpSound;              // Jump sound
-    public AudioClip landingSound;           // Landing sound
 
     public Rifle rifleScript;                // Reference to the Rifle script
     public CharacterController characterController; // Reference to CharacterController or similar movement script
@@ -78,7 +76,6 @@ public class Sounds : MonoBehaviour
         previousAmmo = rifleScript.currentAmmo;
 
         HandleFootsteps();
-        HandleJumpingAndLanding();
     }
 
     private void PlayFireSound()
@@ -181,50 +178,12 @@ public class Sounds : MonoBehaviour
             }
         }
     }
-
-    private void HandleJumpingAndLanding()
-    {
-        // Handle jumping logic
-        if (characterController == null) return;
-
-        if (!isJumping && !characterController.isGrounded)
-        {
-            isJumping = true; // Player is jumping
-            PlayJumpSound();
-        }
-
-        // Handle landing logic
-        if (isJumping && characterController.isGrounded)
-        {
-            isJumping = false; // Player has landed
-            PlayLandingSound();
-        }
-    }
-
     private void PlayFootstepSound()
     {
         if (footstepSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, footstepSounds.Length);
             audioSource.PlayOneShot(footstepSounds[randomIndex]);
-        }
-    }
-
-    private void PlayJumpSound()
-    {
-        if (jumpSound != null && audioSource != null)
-        {
-            audioSource.Stop();
-            audioSource.PlayOneShot(jumpSound);
-        }
-    }
-
-    private void PlayLandingSound()
-    {
-        if (landingSound != null && audioSource != null)
-        {
-            audioSource.Stop();
-            audioSource.PlayOneShot(landingSound);
         }
     }
 }
