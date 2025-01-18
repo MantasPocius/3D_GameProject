@@ -13,12 +13,15 @@ public class Rifle : MonoBehaviour
 
     public GameObject CasePrefab;
     public Transform shellEjectPoint;
-    public float shellEjectDelay = 0.5f;
+    private float shellEjectDelay = 0.6f;
 
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
     public ParticleSystem muzzleFlash;
     public GameObject bulletImpactPrefab;
+
+    public Renderer rifleRenderer;
+    public int targetMaterialIndex = 3;
 
     public GameObject regularAmmoIcon;
     public GameObject explosiveAmmoIcon;
@@ -40,6 +43,7 @@ public class Rifle : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
+
     }
 
     void Update()
@@ -67,7 +71,6 @@ public class Rifle : MonoBehaviour
     {
         if (currentAmmo <= 0)
         {
-            Debug.Log("No bullet");
             return;
         }
 
@@ -198,7 +201,6 @@ public class Rifle : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         isReloading = false;
-        Debug.Log("Reloading complete");
     }
 
 
@@ -241,13 +243,46 @@ public class Rifle : MonoBehaviour
         {
             regularAmmoIcon.SetActive(true);
             explosiveAmmoIcon.SetActive(false);
+
+            SetEmissionColor("#202226");
         }
         else
         {
             regularAmmoIcon.SetActive(false);
             explosiveAmmoIcon.SetActive(true);
+
+            SetEmissionColor("#FF4500");
         }
 
+    }
+
+    void SetEmissionColor(string hexColor)
+    {
+        if (rifleRenderer != null)
+        {
+            Material[] materials = rifleRenderer.materials;
+            if (targetMaterialIndex >= 0 && targetMaterialIndex < materials.Length)
+            {
+                Material targetMaterial = materials[targetMaterialIndex];
+                if (ColorUtility.TryParseHtmlString(hexColor, out Color color))
+                {
+                    targetMaterial.EnableKeyword("_EMISSION");
+                    targetMaterial.SetColor("_EmissionColor", color);
+                }
+                else
+                {
+                    Debug.LogError($"Invalid HEX color: {hexColor}");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Material index {targetMaterialIndex} is out of range.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Rifle renderer is not assigned.");
+        }
     }
 
 }

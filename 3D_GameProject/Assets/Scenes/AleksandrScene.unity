@@ -443,6 +443,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!137 &1184567157 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3509580517935558832, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+  m_PrefabInstance: {fileID: 6043414255265922115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1282382415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7885178071297329485, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
@@ -723,6 +728,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2556170158671526407, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052394193516466392, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352792179793168268, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5650400919349706915, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_Name
       value: CanvasUI
@@ -734,6 +751,10 @@ PrefabInstance:
     - target: {fileID: 7282095967711215332, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885178071297329485, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8286864313938982165, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_Pivot.x
@@ -909,6 +930,10 @@ PrefabInstance:
       propertyPath: healthFillImage
       value: 
       objectReference: {fileID: 1312425985}
+    - target: {fileID: 3509580517935558832, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57644b50825fdf8489e297b57c7fcceb, type: 2}
     - target: {fileID: 4167111282471007487, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.19
@@ -962,6 +987,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8044031523680335995, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+      propertyPath: rifleRenderer
+      value: 
+      objectReference: {fileID: 1184567157}
+    - target: {fileID: 8044031523680335995, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
       propertyPath: regularAmmoIcon
       value: 
       objectReference: {fileID: 1282382415}
@@ -969,6 +998,10 @@ PrefabInstance:
       propertyPath: explosiveAmmoIcon
       value: 
       objectReference: {fileID: 320502405}
+    - target: {fileID: 8044031523680335995, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+      propertyPath: riflePartRenderer
+      value: 
+      objectReference: {fileID: 1184567157}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
