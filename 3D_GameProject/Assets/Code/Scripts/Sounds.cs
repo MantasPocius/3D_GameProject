@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Sounds : MonoBehaviour
 {
-    public AudioSource audioSource;          // Reference to the AudioSource
+    public AudioSource audioSource;          // Reference to the AudioSource (on the player character)
     public AudioClip fireSound;              // Firing sound
     public AudioClip reloadOpenSound;        // Sound for opening the gun
     public AudioClip reloadBulletSound;      // Sound for inserting a bullet
@@ -11,6 +11,7 @@ public class Sounds : MonoBehaviour
     public AudioClip smallReloadSound;       // Small reload sound after every shot (short reload animation)
     public AudioClip[] footstepSounds;       // Array of footstep sounds
     public AudioClip landingSound;           // Landing sound
+    public AudioClip trenchesSound;          // Trenches background sound (4 minutes long)
 
     public Rifle rifleScript;                // Reference to the Rifle script
     public CharacterController characterController; // Reference to CharacterController or similar movement script
@@ -29,6 +30,33 @@ public class Sounds : MonoBehaviour
         if (characterController != null)
         {
             isJumping = !characterController.isGrounded; // Set jumping state based on initial grounded state
+        }
+
+        // Play trenches sound effect on loop
+        StartTrenchesSound();
+    }
+
+    private void StartTrenchesSound()
+    {
+        if (trenchesSound != null)
+        {
+            // Create a new AudioSource specifically for the trenches sound
+            AudioSource trenchesAudioSource = gameObject.AddComponent<AudioSource>();
+            trenchesAudioSource.clip = trenchesSound;
+            trenchesAudioSource.loop = true; // Loop the trenches sound
+            trenchesAudioSource.playOnAwake = true; // Ensure it starts automatically
+            trenchesAudioSource.spatialBlend = 0f; // Make it 2D
+            trenchesAudioSource.volume = 0.9f; // Set the volume for the trenches sound
+
+            // Play the trenches sound
+            trenchesAudioSource.Play();
+
+            // Log confirmation for debugging
+            Debug.Log("Trenches sound started using a separate AudioSource.");
+        }
+        else
+        {
+            Debug.LogError("Trenches sound clip is not assigned!");
         }
     }
 
@@ -78,6 +106,17 @@ public class Sounds : MonoBehaviour
 
         HandleFootsteps();
         HandleLanding();
+    }
+
+    private void PlayTrenchesSound()
+    {
+        if (trenchesSound != null && audioSource != null)
+        {
+            audioSource.clip = trenchesSound; // Assign the trenches sound to the audio source
+            audioSource.loop = true;         // Enable looping
+            audioSource.spatialBlend = 0f;   // Set to 2D mode (ensures consistent volume regardless of position)
+            audioSource.Play();              // Start playing the sound
+        }
     }
 
     private void PlayFireSound()
