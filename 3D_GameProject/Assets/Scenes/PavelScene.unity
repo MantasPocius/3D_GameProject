@@ -5601,7 +5601,7 @@ MonoBehaviour:
   reloadBulletSound: {fileID: 8300000, guid: 46019b09af077c348ab9850208449304, type: 3}
   reloadFinalBulletSound: {fileID: 8300000, guid: 274910ffe4a67ee40b85efd85b435ad6, type: 3}
   reloadCloseSound: {fileID: 8300000, guid: 3d23880dc9582b5488973e115f101d35, type: 3}
-  smallReloadSound: {fileID: 8300000, guid: 2734f724a7e1e794592250ab0012a37d, type: 3}
+  smallReloadSound: {fileID: 8300000, guid: f90a664210bb50e4f9d432bfba6f191a, type: 3}
   footstepSounds: []
   landingSound: {fileID: 0}
   trenchesSound: {fileID: 0}
