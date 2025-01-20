@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1710850921835154421}
   - component: {fileID: 3452656541051388081}
   - component: {fileID: 2511329708204233565}
+  - component: {fileID: 751035785298849456}
+  - component: {fileID: 6159922905710595145}
   m_Layer: 0
   m_Name: Cone of fire
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2484819227612640396}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.024582528, y: 0.9971574, z: -0.02065266, w: 0.068164214}
+  m_LocalRotation: {x: -0.024585154, y: 0.99715763, z: -0.020649264, w: 0.06816061}
   m_LocalPosition: {x: 6.42, y: 1.28, z: 22.41}
   m_LocalScale: {x: 0.14, y: 0.2, z: 0.43}
   m_ConstrainProportionsScale: 0
@@ -4830,3 +4832,38 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &751035785298849456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484819227612640396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 17.9, y: 18.69, z: 35.48}
+  m_Center: {x: 0, y: 0, z: 18.9}
+--- !u!114 &6159922905710595145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484819227612640396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb8edff89e8df14586d5e2e600481a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 5
+  damageInterval: 1

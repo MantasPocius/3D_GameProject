@@ -108,6 +108,11 @@ public class Rifle : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy hit");
+                MageEnemy enemy = hit.collider.GetComponent<MageEnemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage); 
+                }
             }
 
             var hitBox = hit.collider.GetComponent<HitBox>();
