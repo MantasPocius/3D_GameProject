@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 8044031523680335995}
   m_Layer: 0
   m_Name: Player_Main
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2222,17 +2222,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmmo: 10
-  currentAmmo: 0
-  reloadTime: 2
-  fireRate: 1
+  currentAmmo: 10
   damage: 10
   CasePrefab: {fileID: 7855159051329160553, guid: 68e7ef02262433144a2b6f15fa26f633, type: 3}
   shellEjectPoint: {fileID: 2034565925342210556}
-  shellEjectDelay: 0.6
+  explosionPrefab: {fileID: 2738842253737923818, guid: 38bb506b5eb81a34daf843b9b4c2f14f, type: 3}
+  explosionRadius: 5
+  explosionDamage: 50
   playerCamera: {fileID: 695651926039279651}
   ammoText: {fileID: 0}
   muzzleFlash: {fileID: 71452388939406678}
   bulletImpactPrefab: {fileID: 8208521894766935983, guid: 845301dc3dac69849ab55c50fe6a6dd8, type: 3}
+  rifleRenderer: {fileID: 3509580517935558832}
+  targetMaterialIndex: 3
+  regularAmmoIcon: {fileID: 0}
+  explosiveAmmoIcon: {fileID: 0}
   armsAnimator: {fileID: 4734684932173002776}
   gunAnimator: {fileID: 7322295209038588218}
 --- !u!1 &7636168839787410317
@@ -2322,7 +2326,7 @@ SkinnedMeshRenderer:
   - {fileID: -5605289326131794027, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
   - {fileID: 3780671244086486322, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
   - {fileID: 99656467281103303, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
-  - {fileID: -4246479402191905792, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
+  - {fileID: 2100000, guid: 57644b50825fdf8489e297b57c7fcceb, type: 2}
   - {fileID: -7198559261415225722, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
   - {fileID: -8693172909504858975, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}
   - {fileID: 725804396391725484, guid: 9cc2cfaab78af614083a18ac6c7c91d2, type: 3}

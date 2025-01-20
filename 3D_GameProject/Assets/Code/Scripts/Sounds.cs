@@ -12,6 +12,7 @@ public class Sounds : MonoBehaviour
     public AudioClip[] footstepSounds;       // Array of footstep sounds
     public AudioClip landingSound;           // Landing sound
     public AudioClip trenchesSound;          // Trenches background sound (4 minutes long)
+    public AudioClip concreteHitSound;       // Sound for hitting concrete surfaces
 
     public Rifle rifleScript;                // Reference to the Rifle script
     public CharacterController characterController; // Reference to CharacterController or similar movement script
@@ -50,13 +51,6 @@ public class Sounds : MonoBehaviour
 
             // Play the trenches sound
             trenchesAudioSource.Play();
-
-            // Log confirmation for debugging
-            Debug.Log("Trenches sound started using a separate AudioSource.");
-        }
-        else
-        {
-            Debug.LogError("Trenches sound clip is not assigned!");
         }
     }
 
@@ -70,6 +64,8 @@ public class Sounds : MonoBehaviour
             PlayFireSound();
             Invoke(nameof(PlaySmallReloadSound), 0.3f);  // Play a small reload sound after 0.3 seconds delay
         }
+
+        HandleRayHitSounds(); // Check and play hit sounds when shooting
 
         // Trigger reload automatically when reaching 0 ammo
         if (rifleScript.currentAmmo == 0 && !isReloadingSoundPlayed)
@@ -118,11 +114,41 @@ public class Sounds : MonoBehaviour
             audioSource.Play();              // Start playing the sound
         }
     }
+    private void HandleRayHitSounds()
+    {
+        if (rifleScript.currentAmmo < previousAmmo) // Check if the rifle has just fired
+        {
+            Ray ray = rifleScript.playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                // Skip playing sounds for the player, enemies, or sky
+                if (!hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Enemy"))
+                {
+                    PlayConcreteHitSound(); // Play a default hit sound for all other surfaces
+                }
+            }
+        }
+    }
+
+    private void PlayConcreteHitSound()
+    {
+        if (concreteHitSound != null)
+        {
+            SetRandomPitch();
+            audioSource.PlayOneShot(concreteHitSound);
+        }
+    }
+
+    private void SetRandomPitch()
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f); // Random pitch between 0.9 and 1.1
+    }
 
     private void PlayFireSound()
     {
         if (fireSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(fireSound);
         }
     }
@@ -131,6 +157,7 @@ public class Sounds : MonoBehaviour
     {
         if (!isSmallReloadSoundPlayed && smallReloadSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(smallReloadSound);
             isSmallReloadSoundPlayed = true;
             Invoke(nameof(ResetSmallReloadFlag), smallReloadSound.length); // Reset after the sound finishes
@@ -179,6 +206,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadOpenSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadOpenSound);
         }
     }
@@ -187,6 +215,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadBulletSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadBulletSound);
         }
     }
@@ -195,6 +224,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadFinalBulletSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadFinalBulletSound);
         }
     }
@@ -203,6 +233,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadCloseSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadCloseSound);
         }
     }
@@ -241,6 +272,7 @@ public class Sounds : MonoBehaviour
         if (footstepSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, footstepSounds.Length);
+            SetRandomPitch();
             audioSource.PlayOneShot(footstepSounds[randomIndex]);
         }
     }
@@ -250,6 +282,7 @@ public class Sounds : MonoBehaviour
         if (landingSound != null && audioSource != null)
         {
             audioSource.Stop();
+            SetRandomPitch();
             audioSource.PlayOneShot(landingSound);
         }
     }
