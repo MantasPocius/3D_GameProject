@@ -119,10 +119,16 @@ public class Sounds : MonoBehaviour
         }
     }
 
+    private void SetRandomPitch()
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f); // Random pitch between 0.9 and 1.1
+    }
+
     private void PlayFireSound()
     {
         if (fireSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(fireSound);
         }
     }
@@ -131,6 +137,7 @@ public class Sounds : MonoBehaviour
     {
         if (!isSmallReloadSoundPlayed && smallReloadSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(smallReloadSound);
             isSmallReloadSoundPlayed = true;
             Invoke(nameof(ResetSmallReloadFlag), smallReloadSound.length); // Reset after the sound finishes
@@ -179,6 +186,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadOpenSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadOpenSound);
         }
     }
@@ -187,6 +195,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadBulletSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadBulletSound);
         }
     }
@@ -195,6 +204,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadFinalBulletSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadFinalBulletSound);
         }
     }
@@ -203,6 +213,7 @@ public class Sounds : MonoBehaviour
     {
         if (audioSource != null && reloadCloseSound != null)
         {
+            SetRandomPitch();
             audioSource.PlayOneShot(reloadCloseSound);
         }
     }
@@ -241,6 +252,7 @@ public class Sounds : MonoBehaviour
         if (footstepSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, footstepSounds.Length);
+            SetRandomPitch();
             audioSource.PlayOneShot(footstepSounds[randomIndex]);
         }
     }
@@ -250,6 +262,7 @@ public class Sounds : MonoBehaviour
         if (landingSound != null && audioSource != null)
         {
             audioSource.Stop();
+            SetRandomPitch();
             audioSource.PlayOneShot(landingSound);
         }
     }
