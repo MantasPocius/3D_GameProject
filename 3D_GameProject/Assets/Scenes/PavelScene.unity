@@ -5519,7 +5519,7 @@ MonoBehaviour:
   footstepSounds: []
   landingSound: {fileID: 0}
   trenchesSound: {fileID: 0}
-  concreteHitSound: {fileID: 8300000, guid: 2bb496706f4d1b044b741f1b9a8058c6, type: 3}
+  concreteHitSound: {fileID: 8300000, guid: a369b8a8facf91d4090ac35c078f633e, type: 3}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 0}
   footstepInterval: 0.5
