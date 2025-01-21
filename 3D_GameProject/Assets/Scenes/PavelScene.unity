@@ -20864,7 +20864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6054a8d2a28febf4eb26e7450932a9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2059791817}
   fireSound: {fileID: 0}
   reloadOpenSound: {fileID: 0}
   reloadBulletSound: {fileID: 0}
