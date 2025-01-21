@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6c6bda3c1bbef4098fcf2751eed399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 475405322}
   pickupRange: 5
   inventoryItemName: Key
   pickupHint: {fileID: 1635596368}
@@ -3831,6 +3831,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &475405322 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4120903821060719116, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+  m_PrefabInstance: {fileID: 475405317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &486230199
 GameObject:
   m_ObjectHideFlags: 0
@@ -5408,6 +5413,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.728
       objectReference: {fileID: 0}
+    - target: {fileID: 4964661427985041581, guid: 8222d061487f0544ca5efcca43fce2b1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a0da4cedf3eee445aeab4e1f69af37e, type: 2}
     - target: {fileID: 5822605716819291488, guid: 8222d061487f0544ca5efcca43fce2b1, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -18157,7 +18166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea99ee7fab7b6d4cb9560b0c60b8ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 475405322}
   openRange: 10
   findHint: {fileID: 64713012}
   openHint: {fileID: 446434214}
