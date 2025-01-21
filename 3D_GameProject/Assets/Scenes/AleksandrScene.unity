@@ -723,18 +723,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2556170158671526407, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3052394193516466392, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4352792179793168268, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5650400919349706915, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_Name
       value: CanvasUI
@@ -746,10 +734,6 @@ PrefabInstance:
     - target: {fileID: 7282095967711215332, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7885178071297329485, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8286864313938982165, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
       propertyPath: m_Pivot.x

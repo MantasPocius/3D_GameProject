@@ -56,8 +56,6 @@ public class Rifle : MonoBehaviour
         if (isReloading || isChangingColor)
             return;
 
-        if (isReloading)
-            return;
 
         if (Input.GetMouseButtonDown(0) && isReadyToFire)
         {
@@ -82,10 +80,6 @@ public class Rifle : MonoBehaviour
             return;
         }
 
-        if (currentAmmo <= 0)
-        {
-            return;
-        }
 
         currentAmmo--;
         isReadyToFire = false;
