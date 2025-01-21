@@ -18,7 +18,7 @@ public class Rifle : MonoBehaviour
     public GameObject explosionPrefab;
     public float explosionRadius = 5f;
     public float explosionDamage = 50;
-    private bool isChangingColor = false;
+    public bool isChangingColor = false;
 
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
@@ -31,8 +31,8 @@ public class Rifle : MonoBehaviour
     public GameObject regularAmmoIcon;
     public GameObject explosiveAmmoIcon;
 
-    private bool isReloading = false;
-    private bool isReadyToFire = true;
+    public bool isReloading = false;
+    public bool isReadyToFire = true;
 
     public Animator armsAnimator;
     public Animator gunAnimator;
@@ -135,14 +135,14 @@ public class Rifle : MonoBehaviour
             {
                 CreateExplosion(hit.point);
 
-                StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f));
+                StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
                 isChangingColor = true;
             }
         }
         else if (currentAmmoType == AmmoType.Explosive)
         {
 
-            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f));
+            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
             isChangingColor = true;
         }
 
@@ -182,7 +182,7 @@ public class Rifle : MonoBehaviour
         isReadyToFire = true;
     }
 
-    IEnumerator Reload()
+    public IEnumerator Reload()
     {
         isReloading = true;
 
@@ -264,6 +264,9 @@ public class Rifle : MonoBehaviour
 
     void SwitchAmmoType()
     {
+        if (isChangingColor)
+            return;
+
         currentAmmoType = currentAmmoType == AmmoType.Regular ? AmmoType.Explosive : AmmoType.Regular;
 
         if (currentAmmoType == AmmoType.Regular)
@@ -271,20 +274,18 @@ public class Rifle : MonoBehaviour
             regularAmmoIcon.SetActive(true);
             explosiveAmmoIcon.SetActive(false);
 
-            StartCoroutine(SetEmissionColor("#FF4500", "#202226", 1f));
-
+            StartCoroutine(SetEmissionColor("#FF4500", "#202226", 1f, false));
         }
         else
         {
             regularAmmoIcon.SetActive(false);
             explosiveAmmoIcon.SetActive(true);
 
-            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f));
-
+            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
         }
     }
 
-    IEnumerator SetEmissionColor(string startHexColor, string targetHexColor, float duration)
+    IEnumerator SetEmissionColor(string startHexColor, string targetHexColor, float duration, bool enableEmission)
     {
         if (rifleRenderer != null)
         {
@@ -296,7 +297,16 @@ public class Rifle : MonoBehaviour
                 if (ColorUtility.TryParseHtmlString(startHexColor, out Color startColor) &&
                     ColorUtility.TryParseHtmlString(targetHexColor, out Color targetColor))
                 {
-                    targetMaterial.EnableKeyword("_EMISSION");
+                    isChangingColor = true;
+
+                    if (enableEmission)
+                    {
+                        targetMaterial.EnableKeyword("_EMISSION");
+                    }
+                    else
+                    {
+                        targetMaterial.DisableKeyword("_EMISSION");
+                    }
 
                     float time = 0f;
                     while (time < duration)
@@ -306,24 +316,10 @@ public class Rifle : MonoBehaviour
                         targetMaterial.SetColor("_EmissionColor", lerpedColor);
                         yield return null;
                     }
-
                     targetMaterial.SetColor("_EmissionColor", targetColor);
                 }
-                else
-                {
-                    Debug.LogError($"Invalid HEX color: {startHexColor} or {targetHexColor}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"Material index {targetMaterialIndex} is out of range.");
             }
         }
-        else
-        {
-            Debug.LogError("Rifle renderer is not assigned.");
-        }
-
         isChangingColor = false;
     }
 
@@ -363,5 +359,53 @@ public class Rifle : MonoBehaviour
                 rb.AddExplosionForce(700f, explosionPoint, explosionRadius);
             }
         }
+    }
+
+    public void SetAmmoIconsActive(bool isActive)
+    {
+        if (regularAmmoIcon != null)
+        {
+            regularAmmoIcon.SetActive(isActive && currentAmmoType == AmmoType.Regular);
+        }
+        if (explosiveAmmoIcon != null)
+        {
+            explosiveAmmoIcon.SetActive(isActive && currentAmmoType == AmmoType.Explosive);
+        }
+    }
+
+
+    public void StopColorChange()
+    {
+        StopAllCoroutines();
+        isChangingColor = false;
+    }
+
+    public void ResetEmissionColor()
+    {
+        if (rifleRenderer != null)
+        {
+            Material[] materials = rifleRenderer.materials;
+            if (targetMaterialIndex >= 0 && targetMaterialIndex < materials.Length)
+            {
+                Material targetMaterial = materials[targetMaterialIndex];
+
+                string hexColor = GetCurrentAmmoColor();
+
+                if (ColorUtility.TryParseHtmlString(hexColor, out Color targetColor))
+                {
+                    targetMaterial.SetColor("_EmissionColor", targetColor);
+                }
+            }
+        }
+    }
+
+    private string GetCurrentAmmoColor()
+    {
+        if (currentAmmoType == AmmoType.Explosive)
+        {
+            return "#FF4500";
+        }
+
+        return "#202226";
     }
 }
