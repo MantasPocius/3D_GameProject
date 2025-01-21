@@ -5523,7 +5523,7 @@ MonoBehaviour:
   footstepSounds: []
   landingSound: {fileID: 0}
   trenchesSound: {fileID: 0}
-  concreteHitSound: {fileID: 8300000, guid: 2bb496706f4d1b044b741f1b9a8058c6, type: 3}
+  concreteHitSound: {fileID: 8300000, guid: a369b8a8facf91d4090ac35c078f633e, type: 3}
   rifleScript: {fileID: 2059791809}
   characterController: {fileID: 0}
   footstepInterval: 0.5
@@ -20868,7 +20868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6054a8d2a28febf4eb26e7450932a9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2059791817}
   fireSound: {fileID: 0}
   reloadOpenSound: {fileID: 0}
   reloadBulletSound: {fileID: 0}
