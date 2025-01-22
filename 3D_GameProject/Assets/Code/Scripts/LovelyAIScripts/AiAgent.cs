@@ -17,7 +17,6 @@ public class AiAgent : MonoBehaviour
     void Start()
     {
         ragdoll = GetComponent<Ragdoll>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
