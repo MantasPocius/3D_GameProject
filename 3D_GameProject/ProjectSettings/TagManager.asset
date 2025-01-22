@@ -12,7 +12,10 @@ TagManager:
   - DAHKNESS
   - Lightness
   - Portal
-  - Key Enemy
+  - YoureWizardHarry
+  - KeyEnemy
+  - River
+  - FinishLine
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
