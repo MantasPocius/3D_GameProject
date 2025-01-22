@@ -10,8 +10,7 @@ public class AiDeathState : AiState
     {
         if(agent.tag == "KeyEnemy")
         {
-            Debug.Log("BABYMETAL DEATH");
-            agent.enabled = false;
+            agent.gameObject.SetActive(false);
         }
         agent.ragdoll.ActivateRagdoll();
         direction.y = 1;
