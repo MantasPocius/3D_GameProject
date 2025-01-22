@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class AiAgent : MonoBehaviour
 {
     public AiStateMachine stateMachine;
@@ -13,12 +14,13 @@ public class AiAgent : MonoBehaviour
     public Ragdoll ragdoll;
     public SkinnedMeshRenderer mesh;
     public Transform target;
-    public int KeyEnemyKilled = 0;
+    public Animator animator;
     public GameObject sphere;
     public GameObject effect;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         ragdoll = GetComponent<Ragdoll>();
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();

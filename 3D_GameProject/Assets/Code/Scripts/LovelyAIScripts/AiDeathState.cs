@@ -6,18 +6,20 @@ using UnityEngine;
 public class AiDeathState : AiState
 {
     public Vector3 direction;
+    public static int KeyEnemyKilled = 0;
     public void Enter(AiAgent agent)
     {
-        if(agent.tag == "KeyEnemy")
+        if(agent.tag == "KeyEnemy" && agent.animator.enabled)
         {
             agent.effect.SetActive(false);
-            agent.KeyEnemyKilled++;
-
+            KeyEnemyKilled++;
+            Debug.Log(KeyEnemyKilled);
         }
-        if (agent.KeyEnemyKilled == 4)
+        if (KeyEnemyKilled == 4)
         {
             agent.sphere.SetActive(false);
         }
+        //keyEnemyCheck.OnEnemyKilled(agent);
         agent.ragdoll.ActivateRagdoll();
         direction.y = 1;
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
