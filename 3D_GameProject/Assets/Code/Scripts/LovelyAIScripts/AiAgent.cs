@@ -13,6 +13,9 @@ public class AiAgent : MonoBehaviour
     public Ragdoll ragdoll;
     public SkinnedMeshRenderer mesh;
     public Transform target;
+    public int KeyEnemyKilled = 0;
+    public GameObject sphere;
+    public GameObject effect;
 
     void Start()
     {

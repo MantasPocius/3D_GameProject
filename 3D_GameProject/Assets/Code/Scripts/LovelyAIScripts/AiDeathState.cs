@@ -10,7 +10,13 @@ public class AiDeathState : AiState
     {
         if(agent.tag == "KeyEnemy")
         {
-            agent.gameObject.SetActive(false);
+            agent.effect.SetActive(false);
+            agent.KeyEnemyKilled++;
+
+        }
+        if (agent.KeyEnemyKilled == 4)
+        {
+            agent.sphere.SetActive(false);
         }
         agent.ragdoll.ActivateRagdoll();
         direction.y = 1;
