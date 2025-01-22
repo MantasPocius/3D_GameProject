@@ -21,7 +21,7 @@ public class KeyEnemyCheck : MonoBehaviour
     public void OnEnemyKilled(GameObject enemy)
     {
         // Check if the enemy has the tag "KeyEnemy"
-        if (enemy.CompareTag("KeyEnemy"))
+        /*if (enemy.CompareTag("KeyEnemy"))
         {
             EnemyKilled++;
             Debug.Log("Key enemy killed. Total kills: " + keyEnemiesKilled);
@@ -31,6 +31,6 @@ public class KeyEnemyCheck : MonoBehaviour
             {
                 OpenGate();
             }
-        }
+        }*/
     }
 }
