@@ -80,13 +80,9 @@ public class Rifle : MonoBehaviour
             return;
         }
 
-
         currentAmmo--;
         isReadyToFire = false;
-
-
         UpdateAmmoDisplay();
-
 
         if (armsAnimator != null)
         {
@@ -106,10 +102,8 @@ public class Rifle : MonoBehaviour
         RaycastHit hit;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-
         if (Physics.Raycast(ray, out hit))
         {
-
             if (currentAmmoType == AmmoType.Regular)
             {
                 if (hit.collider.CompareTag("Enemy"))
@@ -125,7 +119,7 @@ public class Rifle : MonoBehaviour
                 var hitBox = hit.collider.GetComponent<HitBox>();
                 if (hitBox)
                 {
-                    hitBox.OnRaycastHit(this, ray.direction);
+                    hitBox.OnRaycastHit(this, ray.direction);  // Передаем объект оружия
                 }
 
                 CreateBulletImpact(hit);
@@ -133,14 +127,12 @@ public class Rifle : MonoBehaviour
             else if (currentAmmoType == AmmoType.Explosive)
             {
                 CreateExplosion(hit.point);
-
                 StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
                 isChangingColor = true;
             }
         }
         else if (currentAmmoType == AmmoType.Explosive)
         {
-
             StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
             isChangingColor = true;
         }
@@ -149,7 +141,6 @@ public class Rifle : MonoBehaviour
         Invoke(nameof(ResetFire), 1 / fireRate);
 
         Invoke(nameof(ResetShootingAnimation), 0.1f);
-
     }
 
 
