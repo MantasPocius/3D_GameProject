@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 438c6d448f74d1748811213d190dcba0
+  - enabled: 1
     path: Assets/Scenes/PavelScene.unity
     guid: 0d39cb8e1aa637d44bd49bad9cea1c16
   - enabled: 1

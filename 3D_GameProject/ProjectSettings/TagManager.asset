@@ -14,6 +14,8 @@ TagManager:
   - Portal
   - YoureWizardHarry
   - KeyEnemy
+  - River
+  - FinishLine
   layers:
   - Default
   - TransparentFX
