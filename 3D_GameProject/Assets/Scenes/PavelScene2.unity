@@ -332,6 +332,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+--- !u!114 &40694806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5368469035289531028, guid: a950079c80ef03f4ba6b8f13846a6c1f, type: 3}
+  m_PrefabInstance: {fileID: 40694805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &81737600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2041080551}
     - target: {fileID: 2397213245605758032, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+      propertyPath: deathText
+      value: 
+      objectReference: {fileID: 40694806}
+    - target: {fileID: 2397213245605758032, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1954830061}
@@ -4872,11 +4887,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 322a6e946e146fb49adbac7edaa4db61, type: 2}
   m_BuildHeightMesh: 0
---- !u!195 &1254994334 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7528917739016319282, guid: 36ab6e5d4c0e5ae4b8d55d6f8e725d84, type: 3}
-  m_PrefabInstance: {fileID: 1631288133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1259663171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,10 +6132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage Idle (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 1254994334}
     - target: {fileID: 6374942470094521117, guid: 36ab6e5d4c0e5ae4b8d55d6f8e725d84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.801924
