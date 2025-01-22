@@ -12,15 +12,18 @@ public class AiAgent : MonoBehaviour
     public AiAgentConfig config;
     public Ragdoll ragdoll;
     public SkinnedMeshRenderer mesh;
+    public Transform target;
 
     void Start()
     {
         ragdoll = GetComponent<Ragdoll>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiDeathState());
+        stateMachine.RegisterState(new AiIdleState());
         stateMachine.ChangeState(initialState);
     }
 
