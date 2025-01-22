@@ -109,17 +109,16 @@ public class Rifle : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Object hit - " + hit.collider.name);
 
             if (currentAmmoType == AmmoType.Regular)
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    Debug.Log("Enemy hit");
-                    MageEnemy enemy = hit.collider.GetComponent<MageEnemy>();
-                    if (enemy != null)
+                    EnemyHealth enemyHealth = hit.collider.GetComponentInParent<EnemyHealth>();
+                    if (enemyHealth != null)
                     {
-                        enemy.TakeDamage(damage);
+                        Vector3 direction = hit.point - transform.position;
+                        enemyHealth.TakeDamage(damage, direction.normalized);
                     }
                 }
 
@@ -335,13 +334,12 @@ public class Rifle : MonoBehaviour
 
         foreach (Collider nearbyObject in colliders)
         {
-            if (nearbyObject.CompareTag("Enemy"))
+
+            EnemyHealth enemyHealth = nearbyObject.GetComponentInParent<EnemyHealth>();
+            if (enemyHealth != null)
             {
-                MageEnemy enemy = nearbyObject.GetComponent<MageEnemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(explosionDamage);
-                }
+                Vector3 direction = nearbyObject.transform.position - explosionPoint;
+                enemyHealth.TakeDamage(explosionDamage, direction.normalized);
             }
 
             if (nearbyObject.CompareTag("Player"))
