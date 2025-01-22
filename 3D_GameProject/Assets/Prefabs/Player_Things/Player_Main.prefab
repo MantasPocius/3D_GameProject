@@ -1687,6 +1687,37 @@ Transform:
   - {fileID: 5334149306527664578}
   m_Father: {fileID: 4813459808413392693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5603272004990048415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189657606483709211}
+  m_Layer: 0
+  m_Name: AmCaseSMG_spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189657606483709211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603272004990048415}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000000037252899, y: -0.70784616, z: -0.000000003692548, w: 0.70636666}
+  m_LocalPosition: {x: -1.61, y: 0.459, z: 0.216}
+  m_LocalScale: {x: 1.0974001, y: 1.0956266, z: 1.0990118}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2918074619497630657}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5632156293855414996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2049,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 2738842253737923818, guid: 38bb506b5eb81a34daf843b9b4c2f14f, type: 3}
   explosionRadius: 5
   explosionDamage: 50
+  isChangingColor: 0
   playerCamera: {fileID: 695651926039279651}
   ammoText: {fileID: 0}
   muzzleFlash: {fileID: 71452388939406678}
@@ -2026,6 +2058,8 @@ MonoBehaviour:
   targetMaterialIndex: 3
   regularAmmoIcon: {fileID: 0}
   explosiveAmmoIcon: {fileID: 0}
+  isReloading: 0
+  isReadyToFire: 1
   armsAnimator: {fileID: 4734684932173002776}
   gunAnimator: {fileID: 7322295209038588218}
 --- !u!1 &6844428094565399522
@@ -7555,16 +7589,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1645586098552311609, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 189657606483709211}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2134032747154920835, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7638654258591771820}
   m_SourcePrefab: {fileID: 100100000, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
 --- !u!1 &2536869967824753019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2134032747154920835, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
   m_PrefabInstance: {fileID: 4515244217340347640}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7638654258591771820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536869967824753019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0a109d95973444ebc4cf457ba7a2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 30
+  currentAmmo: 0
+  fireRate: 10
+  damage: 10
+  CasePrefab: {fileID: 349256405184972405, guid: fee1da062bd627b4fbe1950c085bfd00, type: 3}
+  shellEjectPoint: {fileID: 189657606483709211}
+  shellEjectDelay: 0.1
+  playerCamera: {fileID: 695651926039279651}
+  ammoText: {fileID: 0}
+  muzzleFlash: {fileID: 7901826340367189920}
+  bulletImpactPrefab: {fileID: 8208521894766935983, guid: 845301dc3dac69849ab55c50fe6a6dd8, type: 3}
+  isReloading: 0
 --- !u!4 &2918074619497630657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1645586098552311609, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
+  m_PrefabInstance: {fileID: 4515244217340347640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7901826340367189920 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5981259149958972248, guid: bf25ff6facd61af47b1abc8376fda4b3, type: 3}
   m_PrefabInstance: {fileID: 4515244217340347640}
   m_PrefabAsset: {fileID: 0}
