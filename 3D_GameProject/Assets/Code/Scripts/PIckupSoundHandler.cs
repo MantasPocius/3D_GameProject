@@ -4,7 +4,7 @@ public class PickupSoundHandler : MonoBehaviour
 {
     public AudioClip pickupSound; // Assign the sound for picking up items
     public ItemPickup itemPickup; // Reference to the ItemPickup script
-    public Sounds soundsScript;   // Reference to the Sounds script
+    public PlayerSounds soundsScript;   // Reference to the Sounds script
 
     private bool soundPlayed = false; // Flag to ensure the sound only plays once
     void Update()
