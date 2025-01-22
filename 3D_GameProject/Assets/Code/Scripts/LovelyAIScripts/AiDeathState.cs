@@ -8,6 +8,11 @@ public class AiDeathState : AiState
     public Vector3 direction;
     public void Enter(AiAgent agent)
     {
+        if(agent.tag == "KeyEnemy")
+        {
+            Debug.Log("BABYMETAL DEATH");
+            agent.enabled = false;
+        }
         agent.ragdoll.ActivateRagdoll();
         direction.y = 1;
         agent.ragdoll.ApplyForce(direction * agent.config.dieForce);
