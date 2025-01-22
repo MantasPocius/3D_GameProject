@@ -473,6 +473,14 @@ MonoBehaviour:
   reloadCloseSound: {fileID: 8300000, guid: 3d23880dc9582b5488973e115f101d35, type: 3}
   smallReloadSound: {fileID: 8300000, guid: f90a664210bb50e4f9d432bfba6f191a, type: 3}
   concreteHitSound: {fileID: 8300000, guid: a369b8a8facf91d4090ac35c078f633e, type: 3}
+  enemyHurtSounds:
+  - {fileID: 8300000, guid: 17328f7bb00862b4b9fb76cde5becf02, type: 3}
+  - {fileID: 8300000, guid: 99e8b290146387543965b0bdb9963a9d, type: 3}
+  - {fileID: 8300000, guid: ea15711616edad94b9f61e8b25363b86, type: 3}
+  - {fileID: 8300000, guid: 5e72d389ac912c04c88a40a25e176600, type: 3}
+  - {fileID: 8300000, guid: c56511249157ca0479503f837d479cb1, type: 3}
+  - {fileID: 8300000, guid: be5d5369eca03ed4b97b7c94d3854924, type: 3}
+  - {fileID: 8300000, guid: 135416b97d2651c4c9ef38237298bdfe, type: 3}
   rifleScript: {fileID: 768699948}
 --- !u!82 &64328977
 AudioSource:

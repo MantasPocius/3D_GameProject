@@ -3983,7 +3983,11 @@ MonoBehaviour:
   enemyHurtSounds:
   - {fileID: 8300000, guid: 17328f7bb00862b4b9fb76cde5becf02, type: 3}
   - {fileID: 8300000, guid: 99e8b290146387543965b0bdb9963a9d, type: 3}
+  - {fileID: 8300000, guid: ea15711616edad94b9f61e8b25363b86, type: 3}
   - {fileID: 8300000, guid: 5e72d389ac912c04c88a40a25e176600, type: 3}
+  - {fileID: 8300000, guid: c56511249157ca0479503f837d479cb1, type: 3}
+  - {fileID: 8300000, guid: be5d5369eca03ed4b97b7c94d3854924, type: 3}
+  - {fileID: 8300000, guid: 135416b97d2651c4c9ef38237298bdfe, type: 3}
   rifleScript: {fileID: 264650748}
 --- !u!82 &426664536
 AudioSource:
