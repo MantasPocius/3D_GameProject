@@ -4504,6 +4504,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2001163436}
     - target: {fileID: 5300557832286076647, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+      propertyPath: explosionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300557832286076647, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
       propertyPath: regularAmmoIcon
       value: 
       objectReference: {fileID: 1976893816}
@@ -7466,6 +7470,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 24f6925aa5e3b704dbf1d270760f4aca, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24f6925aa5e3b704dbf1d270760f4aca, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5650674458755812215, guid: 24f6925aa5e3b704dbf1d270760f4aca, type: 3}
       propertyPath: m_Materials.Array.data[0]
