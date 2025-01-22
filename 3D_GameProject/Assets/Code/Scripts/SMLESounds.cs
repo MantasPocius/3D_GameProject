@@ -10,6 +10,7 @@ public class SMLE_MK3_Sounds : MonoBehaviour
     public AudioClip reloadCloseSound;           // Sound for closing the gun
     public AudioClip smallReloadSound;           // Small reload sound after every shot
     public AudioClip concreteHitSound;           // Sound for hitting concrete surfaces
+    public AudioClip[] enemyHurtSounds; // Array for enemy and key enemy hurt sounds
 
     public Rifle rifleScript;                    // Reference to the Rifle script
 
@@ -64,14 +65,26 @@ public class SMLE_MK3_Sounds : MonoBehaviour
             Ray ray = rifleScript.playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                // Skip playing sounds for the player, enemies, or key enemies.
-                if (!hit.collider.transform.root.CompareTag("Player") &&
-                    !hit.collider.transform.root.CompareTag("KeyEnemy") &&
-                    !hit.collider.transform.root.CompareTag("Enemy"))
+                // Check if the hit object is tagged as "Enemy" or "KeyEnemy"
+                if (hit.collider.transform.root.CompareTag("Enemy") || hit.collider.transform.root.CompareTag("KeyEnemy"))
                 {
-                    PlayConcreteHitSound(); // Play a default hit sound for all other surfaces
+                    PlayRandomEnemyHurtSound(); // Play random hurt/death sound
+                }
+                else if (!hit.collider.transform.root.CompareTag("Player")) // Skip player sounds
+                {
+                    PlayConcreteHitSound(); // Play default concrete sound
                 }
             }
+        }
+    }
+
+    private void PlayRandomEnemyHurtSound()
+    {
+        if (enemyHurtSounds.Length > 0) // Ensure there are sounds in the array
+        {
+            int randomIndex = Random.Range(0, enemyHurtSounds.Length); // Pick a random sound
+            SetRandomPitch();
+            audioSource.PlayOneShot(enemyHurtSounds[randomIndex]); // Play the selected sound
         }
     }
 
