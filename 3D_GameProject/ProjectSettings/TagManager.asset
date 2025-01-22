@@ -12,6 +12,7 @@ TagManager:
   - DAHKNESS
   - Lightness
   - Portal
+  - Key Enemy
   layers:
   - Default
   - TransparentFX
