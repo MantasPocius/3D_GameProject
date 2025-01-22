@@ -64,8 +64,10 @@ public class SMLE_MK3_Sounds : MonoBehaviour
             Ray ray = rifleScript.playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                // Skip playing sounds for the player, enemies, or sky
-                if (!hit.collider.CompareTag("Player") && !hit.collider.CompareTag("KeyEnemy") && !hit.collider.CompareTag("Enemy"))
+                // Skip playing sounds for the player, enemies, or key enemies.
+                if (!hit.collider.transform.root.CompareTag("Player") &&
+                    !hit.collider.transform.root.CompareTag("KeyEnemy") &&
+                    !hit.collider.transform.root.CompareTag("Enemy"))
                 {
                     PlayConcreteHitSound(); // Play a default hit sound for all other surfaces
                 }
