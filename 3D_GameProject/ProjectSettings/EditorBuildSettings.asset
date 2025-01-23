@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MantasScene.unity
+    guid: 6bbf0bdd8067a434aa78ef177365a853
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c8089a296b0e3824dbed41af62b1e931, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8a239dabc419c3c44b464a1791ae8c37, type: 3}
