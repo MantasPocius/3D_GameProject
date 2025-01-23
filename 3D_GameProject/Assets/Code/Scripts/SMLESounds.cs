@@ -3,9 +3,7 @@ using UnityEngine;
 public class SMLESounds : MonoBehaviour
 {
     public AudioSource audioSource;              // Reference to the AudioSource
-    public AudioClip fireSound;                  // Normal firing sound
-    public AudioClip chargedFireSound;           // Charged mode firing sound
-    public AudioClip chargeActivateSound;        // Sound for activating charged mode
+    public AudioClip fireSound;                  // Firing sound
     public AudioClip reloadOpenSound;            // Sound for opening the gun
     public AudioClip reloadBulletSound;          // Sound for inserting a bullet
     public AudioClip reloadFinalBulletSound;     // Sound for inserting the final bullet
@@ -20,7 +18,6 @@ public class SMLESounds : MonoBehaviour
     private int bulletsToReload = 0;             // Number of bullets left to reload
     private bool isReloadingSoundPlayed = false;
     private bool isSmallReloadSoundPlayed = false; // Ensures small reload sound plays after each shot
-    private bool isChargedMode = false;          // Is the gun in charged mode?
 
     void Update()
     {
@@ -57,12 +54,6 @@ public class SMLESounds : MonoBehaviour
             isReloadingSoundPlayed = false; // Allow reload sounds to play again
         }
 
-        // Toggle charged mode when pressing "Q"
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ToggleChargedMode();
-        }
-
         // Update the ammo tracker
         previousAmmo = rifleScript.currentAmmo;
     }
@@ -87,20 +78,6 @@ public class SMLESounds : MonoBehaviour
         }
     }
 
-    private void ToggleChargedMode()
-    {
-        isChargedMode = !isChargedMode;
-
-        if (isChargedMode)
-        {
-            // Play the charge activation sound when entering charged mode
-            if (chargeActivateSound != null)
-            {
-                audioSource.PlayOneShot(chargeActivateSound);
-            }
-        }
-    }
-
     private void PlayRandomEnemyHurtSound()
     {
         if (enemyHurtSounds.Length > 0) // Ensure there are sounds in the array
@@ -113,15 +90,8 @@ public class SMLESounds : MonoBehaviour
 
     private void PlayFireSound()
     {
-        if (isChargedMode && chargedFireSound != null)
+        if (fireSound != null)
         {
-            // Play the charged mode firing sound
-            SetRandomPitch();
-            audioSource.PlayOneShot(chargedFireSound);
-        }
-        else if (fireSound != null)
-        {
-            // Play the normal firing sound
             SetRandomPitch();
             audioSource.PlayOneShot(fireSound);
         }
