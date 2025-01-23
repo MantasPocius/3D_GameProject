@@ -6,12 +6,22 @@ public class MP28Sounds : MonoBehaviour
     public AudioClip fireSound;              // Sound for the MP28 firing (looping/bursting sound)
     public AudioClip reloadSound;            // Sound for reloading the MP28
 
-    public SMG smgScript;                   // Reference to the SMG script (or MP28 script)
+    public SMG smgScript;                    // Reference to the SMG script (or MP28 script)
 
     private bool isFiring = false;           // Is the player holding the fire button (left-click)
-    private float fireInterval = 0.075f;     // Interval in seconds between each shot sound (adjusted for more realistic SMG fire rate)
+    private float fireInterval = 0.075f;     // Interval in seconds between each shot sound (adjusted for realistic SMG fire rate)
     private float fireTimer = 0f;            // Timer to track the interval between shots
     private bool reloadSoundPlayed = false;  // To track if the reload sound has already played
+
+    void Start()
+    {
+        // Ensure the SMG script's variables are properly initialized
+        if (smgScript != null)
+        {
+            smgScript.currentAmmo = smgScript.maxAmmo;  // Start with a full magazine
+            smgScript.isReloading = false;             // Ensure not reloading at the start
+        }
+    }
 
     void Update()
     {
@@ -66,18 +76,7 @@ public class MP28Sounds : MonoBehaviour
         {
             smgScript.isReloading = true;  // Start reloading when the player presses R or runs out of ammo
             reloadSoundPlayed = false;     // Reset the reload sound flag when reloading starts
-        }
-
-        // When reloading is complete, reset reload flag
-        if (!smgScript.isReloading && reloadSoundPlayed)
-        {
-            reloadSoundPlayed = false;  // Reset the flag after reload completes
-
-            // After reloading completes, check if left-click is being held down
-            if (Input.GetMouseButton(0) && smgScript.currentAmmo > 0)
-            {
-                StartFiring();  // Resume firing sound if still holding left-click
-            }
+            Invoke(nameof(CompleteReload), 2f);  // Simulate a 2-second reload duration
         }
     }
 
@@ -109,5 +108,13 @@ public class MP28Sounds : MonoBehaviour
         {
             audioSource.PlayOneShot(reloadSound);  // Ensure the reload sound plays when triggered
         }
+    }
+
+    // Simulate completing the reload after the reload duration
+    private void CompleteReload()
+    {
+        smgScript.currentAmmo = smgScript.maxAmmo;  // Refill ammo to the maximum
+        smgScript.isReloading = false;             // Reset the reloading flag
+        reloadSoundPlayed = false;                 // Allow the reload sound to play again
     }
 }
