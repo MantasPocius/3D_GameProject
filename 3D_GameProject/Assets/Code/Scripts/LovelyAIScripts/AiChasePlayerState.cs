@@ -12,7 +12,7 @@ public class AiChasePlayerState : AiState
 
     public void Enter(AiAgent agent)
     {
-
+        agent.navMeshAgent.destination = agent.target.position;
     }
 
     public void Exit(AiAgent agent)

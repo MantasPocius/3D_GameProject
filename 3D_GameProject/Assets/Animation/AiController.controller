@@ -80,15 +80,9 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: New Float
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: I need to restart my PC
     m_StateMachine: {fileID: 3391254134338958059}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -106,7 +100,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: I need to restart my PC
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8405562723235648674}
