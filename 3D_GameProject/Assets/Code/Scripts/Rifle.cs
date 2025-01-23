@@ -231,7 +231,7 @@ public class Rifle : MonoBehaviour
     }
 
 
-    void UpdateAmmoDisplay()
+    public void UpdateAmmoDisplay()
     {
 
         if (ammoText != null)
