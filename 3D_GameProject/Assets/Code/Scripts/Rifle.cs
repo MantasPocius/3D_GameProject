@@ -15,6 +15,11 @@ public class Rifle : MonoBehaviour
     public Transform shellEjectPoint;
     private float shellEjectDelay = 0.6f;
 
+    public GameObject explosionPrefab;
+    public float explosionRadius = 5f;
+    public float explosionDamage = 50;
+    public bool isChangingColor = false;
+
     public Camera playerCamera;
     public TextMeshProUGUI ammoText;
     public ParticleSystem muzzleFlash;
@@ -26,8 +31,8 @@ public class Rifle : MonoBehaviour
     public GameObject regularAmmoIcon;
     public GameObject explosiveAmmoIcon;
 
-    private bool isReloading = false;
-    private bool isReadyToFire = true;
+    public bool isReloading = false;
+    public bool isReadyToFire = true;
 
     public Animator armsAnimator;
     public Animator gunAnimator;
@@ -48,8 +53,9 @@ public class Rifle : MonoBehaviour
 
     void Update()
     {
-        if (isReloading)
+        if (isReloading || isChangingColor)
             return;
+
 
         if (Input.GetMouseButtonDown(0) && isReadyToFire)
         {
@@ -69,10 +75,11 @@ public class Rifle : MonoBehaviour
 
     void Shoot()
     {
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 || isChangingColor)
         {
             return;
         }
+
 
         currentAmmo--;
         isReadyToFire = false;
@@ -102,20 +109,40 @@ public class Rifle : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Object hit - " + hit.collider.name);
 
-
-            if (hit.collider.CompareTag("Enemy"))
+            if (currentAmmoType == AmmoType.Regular)
             {
-                Debug.Log("Enemy hit");
-            }
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    EnemyHealth enemyHealth = hit.collider.GetComponentInParent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        Vector3 direction = hit.point - transform.position;
+                        enemyHealth.TakeDamage(damage, direction.normalized);
+                    }
+                }
 
-            var hitBox = hit.collider.GetComponent<HitBox>();
-            if (hitBox)
-            {
-                hitBox.OnRaycastHit(this, ray.direction);
+                var hitBox = hit.collider.GetComponent<HitBox>();
+                if (hitBox)
+                {
+                    hitBox.OnRaycastHit(this, ray.direction);
+                }
+
+                CreateBulletImpact(hit);
             }
-            CreateBulletImpact(hit);
+            else if (currentAmmoType == AmmoType.Explosive)
+            {
+                CreateExplosion(hit.point);
+
+                StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
+                isChangingColor = true;
+            }
+        }
+        else if (currentAmmoType == AmmoType.Explosive)
+        {
+
+            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
+            isChangingColor = true;
         }
 
         Invoke(nameof(EjectShell), shellEjectDelay);
@@ -154,7 +181,7 @@ public class Rifle : MonoBehaviour
         isReadyToFire = true;
     }
 
-    IEnumerator Reload()
+    public IEnumerator Reload()
     {
         isReloading = true;
 
@@ -236,6 +263,8 @@ public class Rifle : MonoBehaviour
 
     void SwitchAmmoType()
     {
+        if (isChangingColor)
+            return;
 
         currentAmmoType = currentAmmoType == AmmoType.Regular ? AmmoType.Explosive : AmmoType.Regular;
 
@@ -244,19 +273,18 @@ public class Rifle : MonoBehaviour
             regularAmmoIcon.SetActive(true);
             explosiveAmmoIcon.SetActive(false);
 
-            SetEmissionColor("#202226");
+            StartCoroutine(SetEmissionColor("#FF4500", "#202226", 1f, false));
         }
         else
         {
             regularAmmoIcon.SetActive(false);
             explosiveAmmoIcon.SetActive(true);
 
-            SetEmissionColor("#FF4500");
+            StartCoroutine(SetEmissionColor("#202226", "#FF4500", 1.5f, true));
         }
-
     }
 
-    void SetEmissionColor(string hexColor)
+    IEnumerator SetEmissionColor(string startHexColor, string targetHexColor, float duration, bool enableEmission)
     {
         if (rifleRenderer != null)
         {
@@ -264,25 +292,118 @@ public class Rifle : MonoBehaviour
             if (targetMaterialIndex >= 0 && targetMaterialIndex < materials.Length)
             {
                 Material targetMaterial = materials[targetMaterialIndex];
-                if (ColorUtility.TryParseHtmlString(hexColor, out Color color))
+
+                if (ColorUtility.TryParseHtmlString(startHexColor, out Color startColor) &&
+                    ColorUtility.TryParseHtmlString(targetHexColor, out Color targetColor))
                 {
-                    targetMaterial.EnableKeyword("_EMISSION");
-                    targetMaterial.SetColor("_EmissionColor", color);
+                    isChangingColor = true;
+
+                    if (enableEmission)
+                    {
+                        targetMaterial.EnableKeyword("_EMISSION");
+                    }
+                    else
+                    {
+                        targetMaterial.DisableKeyword("_EMISSION");
+                    }
+
+                    float time = 0f;
+                    while (time < duration)
+                    {
+                        time += Time.deltaTime;
+                        Color lerpedColor = Color.Lerp(startColor, targetColor, time / duration);
+                        targetMaterial.SetColor("_EmissionColor", lerpedColor);
+                        yield return null;
+                    }
+                    targetMaterial.SetColor("_EmissionColor", targetColor);
                 }
-                else
-                {
-                    Debug.LogError($"Invalid HEX color: {hexColor}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"Material index {targetMaterialIndex} is out of range.");
             }
         }
-        else
+        isChangingColor = false;
+    }
+
+    void CreateExplosion(Vector3 explosionPoint)
+    {
+        if (explosionPrefab != null)
         {
-            Debug.LogError("Rifle renderer is not assigned.");
+            GameObject explosion = Instantiate(explosionPrefab, explosionPoint, Quaternion.identity);
+            Destroy(explosion, 10f);
+        }
+
+        Collider[] colliders = Physics.OverlapSphere(explosionPoint, explosionRadius);
+
+        foreach (Collider nearbyObject in colliders)
+        {
+
+            EnemyHealth enemyHealth = nearbyObject.GetComponentInParent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                Vector3 direction = nearbyObject.transform.position - explosionPoint;
+                enemyHealth.TakeDamage(explosionDamage, direction.normalized);
+            }
+
+            if (nearbyObject.CompareTag("Player"))
+            {
+                Health playerHealth = nearbyObject.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(explosionDamage);
+                }
+            }
+
+            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddExplosionForce(700f, explosionPoint, explosionRadius);
+            }
         }
     }
 
+    public void SetAmmoIconsActive(bool isActive)
+    {
+        if (regularAmmoIcon != null)
+        {
+            regularAmmoIcon.SetActive(isActive && currentAmmoType == AmmoType.Regular);
+        }
+        if (explosiveAmmoIcon != null)
+        {
+            explosiveAmmoIcon.SetActive(isActive && currentAmmoType == AmmoType.Explosive);
+        }
+    }
+
+
+    public void StopColorChange()
+    {
+        StopAllCoroutines();
+        isChangingColor = false;
+    }
+
+    public void ResetEmissionColor()
+    {
+        if (rifleRenderer != null)
+        {
+            Material[] materials = rifleRenderer.materials;
+            if (targetMaterialIndex >= 0 && targetMaterialIndex < materials.Length)
+            {
+                Material targetMaterial = materials[targetMaterialIndex];
+
+                string hexColor = GetCurrentAmmoColor();
+
+                if (ColorUtility.TryParseHtmlString(hexColor, out Color targetColor))
+                {
+                    targetMaterial.SetColor("_EmissionColor", targetColor);
+                }
+            }
+        }
+    }
+
+    private string GetCurrentAmmoColor()
+    {
+        if (currentAmmoType == AmmoType.Explosive)
+        {
+            return "#FF4500";
+        }
+
+        return "#202226";
+    }
 }

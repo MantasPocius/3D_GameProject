@@ -11,6 +11,12 @@ TagManager:
   - Lighting Change
   - DAHKNESS
   - Lightness
+  - Portal
+  - YoureWizardHarry
+  - KeyEnemy
+  - River
+  - FinishLine
+  - DeathBox
   layers:
   - Default
   - TransparentFX
@@ -19,8 +25,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - Enemy
+  - KeyEnemy
   - 
   - 
   - 

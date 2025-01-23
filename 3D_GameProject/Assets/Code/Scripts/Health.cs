@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Health : MonoBehaviour
     public Image healthFillImage;
     public TextMeshProUGUI hpText;
 
+    public TextMeshProUGUI deathText;
+    public bool isDead = false;
+
+    private Movement Movement;
 
     void Start()
     {
@@ -27,11 +32,22 @@ public class Health : MonoBehaviour
             healthFillImage.color = Color.white;
         }
 
+        if (deathText != null)
+        {
+            deathText.gameObject.SetActive(false);
+        }
+
+        Movement = GetComponent<Movement>();
     }
 
 
     private void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             TakeDamage(10);
@@ -47,6 +63,8 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth); 
 
@@ -61,11 +79,32 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        if (deathText != null)
+        {
+            isDead = true;
 
+            deathText.gameObject.SetActive(true);
+        }
+
+        if (Movement != null)
+        {
+            Movement.enabled = false;
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DeathBox"))
+        {
+            Die();
+        }
     }
 
     public void Heal(float healAmount)
     {
+        if (isDead) return;
+
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0.0f, maxHealth);
 
