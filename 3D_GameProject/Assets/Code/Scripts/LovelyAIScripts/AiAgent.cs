@@ -17,6 +17,17 @@ public class AiAgent : MonoBehaviour
     public Animator animator;
     public GameObject sphere;
     public GameObject effect;
+    public GameObject CasePrefab;
+    public Transform shellEjectPoint;
+    private float shellEjectDelay = 0.6f;
+    public ParticleSystem muzzleFlash;
+    public int maxAmmo = 10;
+    public int currentAmmo;
+    private float fireRate = 1f;
+    public float damage = 10;
+    public bool isReadyToFire = false;
+    public Transform targetTransform;
+    public Transform aimTransform;
 
     void Start()
     {
@@ -28,6 +39,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiDeathState());
         stateMachine.RegisterState(new AiIdleState());
+        stateMachine.RegisterState(new AiShootPlayerState());
         stateMachine.ChangeState(initialState);
     }
 
