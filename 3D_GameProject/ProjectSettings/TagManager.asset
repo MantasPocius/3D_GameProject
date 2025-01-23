@@ -16,6 +16,7 @@ TagManager:
   - KeyEnemy
   - River
   - FinishLine
+  - DeathBox
   layers:
   - Default
   - TransparentFX

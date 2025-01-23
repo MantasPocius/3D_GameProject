@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     public TextMeshProUGUI hpText;
 
     public TextMeshProUGUI deathText;
-    private bool isDead = false;
+    public bool isDead = false;
 
     private Movement Movement;
 
@@ -91,6 +91,14 @@ public class Health : MonoBehaviour
             Movement.enabled = false;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DeathBox"))
+        {
+            Die();
+        }
     }
 
     public void Heal(float healAmount)

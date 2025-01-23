@@ -23,7 +23,6 @@ public class LightChange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered");
         StartCoroutine(Intensity(other));
     }
 
@@ -31,7 +30,6 @@ public class LightChange : MonoBehaviour
     {
         if (other.tag == "Lightness" && RenderSettings.ambientIntensity == 0f)
         {
-            Debug.Log("Light");
             for (int i = 0; i <= 100; i += 1)
             {
                 RenderSettings.ambientIntensity = (float)i / 100;
@@ -41,7 +39,6 @@ public class LightChange : MonoBehaviour
         }
         if (other.tag == "DAHKNESS" && RenderSettings.ambientIntensity == 1f)
         {
-            Debug.Log("Dark");
             for (int i = 100; i >= 0; i -= 1)
             {
                 RenderSettings.ambientIntensity = (float)i / 100;
