@@ -11,6 +11,7 @@ public class MP28Sounds : MonoBehaviour
     private bool isFiring = false;           // Is the player holding the fire button (left-click)
     private float fireInterval = 0.075f;     // Interval in seconds between each shot sound (adjusted for more realistic SMG fire rate)
     private float fireTimer = 0f;            // Timer to track the interval between shots
+    public float reloadDuration = 2.5f;  // Time in seconds for the reload animation to complete
     private bool reloadSoundPlayed = false;  // To track if the reload sound has already played
 
     void Update()
@@ -66,6 +67,7 @@ public class MP28Sounds : MonoBehaviour
         {
             smgScript.isReloading = true;  // Start reloading when the player presses R or runs out of ammo
             reloadSoundPlayed = false;     // Reset the reload sound flag when reloading starts
+            Invoke(nameof(CompleteReload), reloadDuration);  // Simulate reload time
         }
 
         // When reloading is complete, reset reload flag
@@ -109,5 +111,9 @@ public class MP28Sounds : MonoBehaviour
         {
             audioSource.PlayOneShot(reloadSound);  // Ensure the reload sound plays when triggered
         }
+    }
+    private void CompleteReload()
+    {
+        smgScript.isReloading = false;  // Reset the reloading flag
     }
 }
