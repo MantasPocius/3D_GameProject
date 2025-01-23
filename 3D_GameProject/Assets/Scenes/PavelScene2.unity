@@ -1513,6 +1513,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fd079ef964f3e014db402bce4a587530, type: 3}
   landingSound: {fileID: 8300000, guid: 661ace247108b3e44a88cdeb334332d3, type: 3}
   trenchesSound: {fileID: 0}
+  gruntSounds:
+  - {fileID: 8300000, guid: 40f5dcb0b9a0f7545b680fd9f1fd8caf, type: 3}
+  - {fileID: 8300000, guid: 55e1e8ff82deeb9469e912292e680ac2, type: 3}
+  - {fileID: 8300000, guid: c8a7feb0b8632c346add869521df6735, type: 3}
+  - {fileID: 8300000, guid: 1aaf0bb216bd5844886f82f5189a0c30, type: 3}
+  - {fileID: 8300000, guid: ca0188d818f7c614abdc7c0911ba65ef, type: 3}
+  - {fileID: 8300000, guid: f6ca22aeea140eb49b24fdd21da52813, type: 3}
+  - {fileID: 8300000, guid: c36b747448d984e4caec869c4fe99b96, type: 3}
   characterController: {fileID: 200389297}
   footstepInterval: 0.5
 --- !u!143 &200389297 stripped

@@ -6,10 +6,13 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] footstepSounds;       // Array of footstep sounds
     public AudioClip landingSound;           // Landing sound
     public AudioClip trenchesSound;          // Trenches background sound (4 minutes long)
+    public AudioClip[] gruntSounds;          // Array of grunt sounds for damage
 
     public CharacterController characterController; // Reference to CharacterController or similar movement script
     public float footstepInterval = 0.5f;    // Time interval between footstep sounds
 
+    private Health playerHealth;             // Reference to the Health script
+    private float previousHealth;            // Tracks previous health to detect changes
     private bool isJumping = false;          // Tracks if the player is jumping
     private float nextFootstepTime = 0f;     // Timer for the next footstep sound
 
@@ -19,6 +22,14 @@ public class PlayerSounds : MonoBehaviour
         if (characterController != null)
         {
             isJumping = !characterController.isGrounded; // Set jumping state based on initial grounded state
+        }
+
+        // Get the Health component
+        playerHealth = GetComponent<Health>();
+
+        if (playerHealth != null)
+        {
+            previousHealth = playerHealth.currentHealth; // Initialize health tracker
         }
 
         // Play trenches sound effect on loop
@@ -46,6 +57,7 @@ public class PlayerSounds : MonoBehaviour
     {
         HandleFootsteps();
         HandleLanding();
+        HandleDamageGrunt(); // Play grunt sound when the player takes damage
     }
 
     private void HandleFootsteps()
@@ -77,6 +89,20 @@ public class PlayerSounds : MonoBehaviour
         }
     }
 
+    private void HandleDamageGrunt()
+    {
+        if (playerHealth == null) return;
+
+        // Check if the player's health has decreased
+        if (playerHealth.currentHealth < previousHealth)
+        {
+            PlayGruntSound(); // Play grunt sound
+        }
+
+        // Update the previous health value
+        previousHealth = playerHealth.currentHealth;
+    }
+
     private void PlayFootstepSound()
     {
         if (footstepSounds.Length > 0)
@@ -94,6 +120,16 @@ public class PlayerSounds : MonoBehaviour
             audioSource.Stop();
             SetRandomPitch();
             audioSource.PlayOneShot(landingSound);
+        }
+    }
+
+    private void PlayGruntSound()
+    {
+        if (gruntSounds.Length > 0 && audioSource != null)
+        {
+            int randomIndex = Random.Range(0, gruntSounds.Length); // Choose a random grunt sound
+            SetRandomPitch();
+            audioSource.PlayOneShot(gruntSounds[randomIndex]);
         }
     }
 
