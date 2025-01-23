@@ -23,4 +23,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void Multiplayer()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
