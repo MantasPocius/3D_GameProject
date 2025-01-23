@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SMLE_MK3_Sounds : MonoBehaviour
+public class SMLESounds : MonoBehaviour
 {
     public AudioSource audioSource;              // Reference to the AudioSource
     public AudioClip fireSound;                  // Firing sound
@@ -10,7 +10,7 @@ public class SMLE_MK3_Sounds : MonoBehaviour
     public AudioClip reloadCloseSound;           // Sound for closing the gun
     public AudioClip smallReloadSound;           // Small reload sound after every shot
     public AudioClip concreteHitSound;           // Sound for hitting concrete surfaces
-    public AudioClip[] enemyHurtSounds; // Array for enemy and key enemy hurt sounds
+    public AudioClip[] enemyHurtSounds;          // Array for enemy and key enemy hurt sounds
 
     public Rifle rifleScript;                    // Reference to the Rifle script
 
