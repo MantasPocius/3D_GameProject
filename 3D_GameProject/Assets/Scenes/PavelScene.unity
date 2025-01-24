@@ -5042,6 +5042,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6054a8d2a28febf4eb26e7450932a9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &475405359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4167111282471007487, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+  m_PrefabInstance: {fileID: 475405317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &485968012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26252,7 +26257,7 @@ PrefabInstance:
     - target: {fileID: 3078590729389003315, guid: fdad02528fbf42d458d4a959d462e320, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2075981773}
+      objectReference: {fileID: 475405359}
     - target: {fileID: 3078590729389003315, guid: fdad02528fbf42d458d4a959d462e320, type: 3}
       propertyPath: targetTransform
       value: 
@@ -26300,6 +26305,10 @@ PrefabInstance:
     - target: {fileID: 7521105391184388787, guid: fdad02528fbf42d458d4a959d462e320, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415717364334657594, guid: fdad02528fbf42d458d4a959d462e320, type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

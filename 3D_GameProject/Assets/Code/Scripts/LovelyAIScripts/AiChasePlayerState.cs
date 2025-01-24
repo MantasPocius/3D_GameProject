@@ -29,6 +29,7 @@ public class AiChasePlayerState : AiState
 
     public void Update(AiAgent agent)
     {
+        
         RaycastHit hit;
         if (!agent.navMeshAgent.enabled)
         {

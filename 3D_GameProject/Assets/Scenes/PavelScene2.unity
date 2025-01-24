@@ -13521,6 +13521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7452941575a3d9c49aebba88c4f6f765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
 --- !u!114 &2088985219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13555,6 +13556,7 @@ MonoBehaviour:
   Collider: {fileID: 0}
   health: {fileID: 0}
   attackRange: {fileID: 0}
+  bandage: {fileID: 0}
 --- !u!95 &2088985220 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b6dc443b61541e444af147dcb3b8eaa5, type: 3}
@@ -13767,6 +13769,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1048384844}
+    - target: {fileID: 1560837928662605021, guid: 876e58062f00abe4a90618947a05044a, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 156441463863082023, guid: 63e77a22e1837244cb16288f2742c3fa, type: 3}
     - target: {fileID: 1560837928662605021, guid: 876e58062f00abe4a90618947a05044a, type: 3}
       propertyPath: targetTransform
       value: 
