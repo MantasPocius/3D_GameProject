@@ -9,7 +9,8 @@ public class AiDeathState : AiState
     public static int KeyEnemyKilled = 0;
     public void Enter(AiAgent agent)
     {
-        if(agent.tag == "KeyEnemy" && agent.animator.enabled)
+        agent.health.currentHealth += 5;
+        if (agent.tag == "KeyEnemy" && agent.animator.enabled)
         {
             agent.effect.SetActive(false);
             KeyEnemyKilled++;

@@ -32,6 +32,7 @@ public class AiAgent : MonoBehaviour
     public Collider Collider;
     public Health health;
     public Collider attackRange;
+    public GameObject bandage;
 
     void Start()
     {
