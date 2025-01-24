@@ -84,6 +84,7 @@ public class Health : MonoBehaviour
             isDead = true;
 
             deathText.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (Movement != null)
