@@ -4991,7 +4991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: 6830000ab7a510d4cbbefb26c0d15c18, type: 3}
   itemPickup: {fileID: 9089702}
-  soundsScript: {fileID: 475405349}
+  soundsScript: {fileID: 475405358}
 --- !u!114 &475405340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5029,6 +5029,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb91992768d2bd14490db3fd559cfc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &475405358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5983618013869546013, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+  m_PrefabInstance: {fileID: 475405317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475405318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6054a8d2a28febf4eb26e7450932a9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &485968012
