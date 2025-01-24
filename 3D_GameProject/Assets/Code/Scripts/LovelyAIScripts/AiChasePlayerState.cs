@@ -41,6 +41,11 @@ public class AiChasePlayerState : AiState
             agent.navMeshAgent.destination = agent.target.position;
             agent.animator.SetBool("IsWalking", true);
         }
+        else
+        {
+            agent.animator.SetBool("IsWalking", false);
+        }
+
         if (timer < 0.0f)
         {
             Vector3 direction = (agent.target.position - agent.navMeshAgent.destination);
@@ -50,7 +55,6 @@ public class AiChasePlayerState : AiState
                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                 {
                     agent.navMeshAgent.destination = agent.target.position;
-                    agent.animator.SetBool("IsWalking", true);
                 }
             }
             timer = agent.config.maxTime;
@@ -65,7 +69,9 @@ public class AiChasePlayerState : AiState
                 Debug.Log(agent.damage);
                 agent.health.TakeDamage(agent.damage);
                 agent.Collider.gameObject.SetActive(false);
+                agent.animator.SetBool("IsAttack", true);
             }
+            agent.animator.SetBool("IsAttack", false);
         }
     }
     public void OnTriggerEnter(Collider other, AiAgent agent)
@@ -74,9 +80,11 @@ public class AiChasePlayerState : AiState
         { }
         if(agent.Collider.tag == "Sword" && other.tag == "Player")
         {
+            agent.animator.SetBool("IsAttack", true);
             agent.health.TakeDamage(agent.damage);
             agent.Collider.gameObject.SetActive(false);
         }
+        agent.animator.SetBool("IsAttack", false);
     }
     public IEnumerator Wait(float seconds)
     {
