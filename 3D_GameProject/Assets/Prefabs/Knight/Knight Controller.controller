@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: idle
-  m_Speed: 2.5
+  m_Speed: 3.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6975274037947099694}
@@ -181,7 +181,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 341c254df35808c46a0fe0e5544fa39e, type: 2}
-    m_Threshold: 0.7744215
+    m_Threshold: 3.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -190,7 +190,7 @@ BlendTree:
   m_BlendParameter: Speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 0.7744215
+  m_MaxThreshold: 3.5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

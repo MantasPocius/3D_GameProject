@@ -28,6 +28,10 @@ public class AiAgent : MonoBehaviour
     public bool isReadyToFire = false;
     public Transform targetTransform;
     public Transform aimTransform;
+    public float attackDelay;
+    public Collider Collider;
+    public Health health;
+    public Collider attackRange;
 
     void Start()
     {

@@ -446,6 +446,7 @@ MonoBehaviour:
   isReadyToFire: 0
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 8500602940014533263}
+  attackDelay: 2
 --- !u!114 &8415717364334657594
 MonoBehaviour:
   m_ObjectHideFlags: 0
