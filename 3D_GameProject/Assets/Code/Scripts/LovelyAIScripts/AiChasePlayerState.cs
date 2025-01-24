@@ -4,12 +4,12 @@ using UnityEngine;
 using Unity.AI;
 using UnityEngine.AI;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 public class AiChasePlayerState : AiState
 {
     
     float timer = 0.0f;
-    public Health health;
 
 
     public void Enter(AiAgent agent)
@@ -39,6 +39,7 @@ public class AiChasePlayerState : AiState
         if (agent.navMeshAgent.hasPath)
         {
             agent.navMeshAgent.destination = agent.target.position;
+            agent.animator.SetBool("IsWalking", true);
         }
         if (timer < 0.0f)
         {
@@ -49,23 +50,35 @@ public class AiChasePlayerState : AiState
                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                 {
                     agent.navMeshAgent.destination = agent.target.position;
+                    agent.animator.SetBool("IsWalking", true);
                 }
             }
             timer = agent.config.maxTime;
         }
-        if(!agent.navMeshAgent.hasPath && Physics.Raycast(agent.aimTransform.position, agent.aimTransform.position + agent.aimTransform.forward * 50, out hit))
+        if (Physics.Raycast(agent.targetTransform.position, agent.aimTransform.position + agent.aimTransform.forward * 50, out hit))
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
-                WaitForSecondsRealtime(2);
+                agent.Collider.gameObject.SetActive(true);
+                Wait(agent.attackDelay);
                 Debug.Log("hit");
                 Debug.Log(agent.damage);
-                health.TakeDamage(agent.damage);
+                agent.health.TakeDamage(agent.damage);
+                agent.Collider.gameObject.SetActive(false);
             }
         }
-        
     }
-    public IEnumerator WaitForSecondsRealtime(float seconds)
+    public void OnTriggerEnter(Collider other, AiAgent agent)
+    {
+        if(agent)
+        { }
+        if(agent.Collider.tag == "Sword" && other.tag == "Player")
+        {
+            agent.health.TakeDamage(agent.damage);
+            agent.Collider.gameObject.SetActive(false);
+        }
+    }
+    public IEnumerator Wait(float seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
     }

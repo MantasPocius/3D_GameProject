@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6130165980645237644}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1863,6 +1863,9 @@ MonoBehaviour:
   isReadyToFire: 0
   targetTransform: {fileID: 0}
   aimTransform: {fileID: 5449040047326649846}
+  attackDelay: 3
+  Collider: {fileID: 6130165980645237644}
+  health: {fileID: 0}
 --- !u!114 &7964044547279414575
 MonoBehaviour:
   m_ObjectHideFlags: 0
