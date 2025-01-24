@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 72880891}
   - component: {fileID: 72880890}
   - component: {fileID: 72880889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Second Floor (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11035,7 +11035,7 @@ GameObject:
   - component: {fileID: 1029399614}
   - component: {fileID: 1029399613}
   - component: {fileID: 1029399612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Second Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
