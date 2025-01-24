@@ -4809,11 +4809,7 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 800524091}
-    m_RemovedComponents:
-    - {fileID: 2171842533657222380, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
-    - {fileID: 1739650403224345867, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
-    - {fileID: 9053521633161107215, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
-    - {fileID: 3042609508627129998, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4120903821060719116, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
