@@ -12358,6 +12358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Great Sword Idle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b6dc443b61541e444af147dcb3b8eaa5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dd35feb1c305c214a9375debe95ae3b0, type: 2}
     - target: {fileID: 6801738708157864337, guid: b6dc443b61541e444af147dcb3b8eaa5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -13613,6 +13617,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 622147393}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 1159290852927550758, guid: aa716594301d32148b400c0b395f4c54, type: 3}
       propertyPath: m_Speed
       value: 3.5
@@ -13621,6 +13626,8 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 0}
+=======
+>>>>>>> 540c689bc6e1a078650e20aa4ae4da880d1a168b
     - target: {fileID: 4491767539702149602, guid: aa716594301d32148b400c0b395f4c54, type: 3}
       propertyPath: target
       value: 
