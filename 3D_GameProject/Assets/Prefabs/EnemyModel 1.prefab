@@ -362,13 +362,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7521105391184388787}
-  - component: {fileID: 1030672244237903252}
   - component: {fileID: 7998732673501643797}
   - component: {fileID: 3078590729389003315}
   - component: {fileID: 8415717364334657594}
   - component: {fileID: 6906147802846874197}
   - component: {fileID: 4247425635351688360}
   - component: {fileID: 4565713673852424217}
+  - component: {fileID: 367753972744942357}
+  - component: {fileID: 6294673490143930644}
   m_Layer: 0
   m_Name: EnemyModel 1
   m_TagString: Enemy
@@ -393,27 +394,6 @@ Transform:
   - {fileID: 1861028735439158412}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 108.048, z: 0}
---- !u!95 &1030672244237903252
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686258084212890580}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0569ec63fdeadc649bc3faad75c19c37, type: 3}
-  m_Controller: {fileID: 9100000, guid: dd017e2505555c94eb63f75fd1c0bc71, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &7998732673501643797
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -454,7 +434,7 @@ MonoBehaviour:
   ragdoll: {fileID: 6906147802846874197}
   mesh: {fileID: 1522491870952618693}
   target: {fileID: 0}
-  animator: {fileID: 1030672244237903252}
+  animator: {fileID: 367753972744942357}
   sphere: {fileID: 0}
   effect: {fileID: 0}
   CasePrefab: {fileID: 0}
@@ -522,6 +502,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7998732673501643797}
+--- !u!95 &367753972744942357
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686258084212890580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0569ec63fdeadc649bc3faad75c19c37, type: 3}
+  m_Controller: {fileID: 9100000, guid: dd017e2505555c94eb63f75fd1c0bc71, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6294673490143930644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686258084212890580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718443d0f6aa16e4d9a63fd074e18210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &696848622262012608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8025,6 +8038,7 @@ MonoBehaviour:
   footstepSounds: []
   landingSound: {fileID: 0}
   trenchesSound: {fileID: 0}
+  gruntSounds: []
   characterController: {fileID: 0}
   footstepInterval: 0.5
 --- !u!1 &6605479991330963040

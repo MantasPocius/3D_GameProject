@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI;
 using UnityEngine.AI;
+using JetBrains.Annotations;
 
 public class AiChasePlayerState : AiState
 {
     
     float timer = 0.0f;
+    public Health health;
 
 
     public void Enter(AiAgent agent)
@@ -27,6 +29,7 @@ public class AiChasePlayerState : AiState
 
     public void Update(AiAgent agent)
     {
+        RaycastHit hit;
         if (!agent.navMeshAgent.enabled)
         {
             return;
@@ -50,5 +53,20 @@ public class AiChasePlayerState : AiState
             }
             timer = agent.config.maxTime;
         }
+        if(!agent.navMeshAgent.hasPath && Physics.Raycast(agent.aimTransform.position, agent.aimTransform.position + agent.aimTransform.forward * 50, out hit))
+        {
+            if(hit.collider.tag == "Player")
+            {
+                WaitForSecondsRealtime(2);
+                Debug.Log("hit");
+                Debug.Log(agent.damage);
+                health.TakeDamage(agent.damage);
+            }
+        }
+        
+    }
+    public IEnumerator WaitForSecondsRealtime(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
     }
 }

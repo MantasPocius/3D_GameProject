@@ -17,6 +17,9 @@ TagManager:
   - River
   - FinishLine
   - DeathBox
+  - Sword
+  - Knight
+  - Mage
   layers:
   - Default
   - TransparentFX
