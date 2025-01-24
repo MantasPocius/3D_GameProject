@@ -4198,7 +4198,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4817,7 +4817,7 @@ PrefabInstance:
       addedObject: {fileID: 2075981773}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7400813619614850089, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 475405321}
     - targetCorrespondingSourceObject: {fileID: 7400813619614850089, guid: 38807286ffe395a42b993bf6cb4c53b1, type: 3}
       insertIndex: -1
